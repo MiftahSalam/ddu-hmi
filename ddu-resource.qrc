@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/files">
+        <file>konfigurasi.txt</file>
+        <file>skm_ddu_2014_db.backup</file>
+    </qresource>
+</RCC>

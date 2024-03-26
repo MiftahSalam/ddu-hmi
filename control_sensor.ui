@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>control_sensor</class>
+ <widget class="QWidget" name="control_sensor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>724</width>
+    <height>556</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(0, 0, 0);</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_5">
+   <item>
+    <widget class="QLabel" name="label_channel">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>174</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Ubuntu</family>
+       <pointsize>20</pointsize>
+       <weight>9</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+font: 75 20pt &quot;Ubuntu&quot;;</string>
+     </property>
+     <property name="text">
+      <string>CHANNEL 1</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_nama_sensor">
+         <property name="font">
+          <font>
+           <family>Ubuntu</family>
+           <pointsize>18</pointsize>
+           <weight>9</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  NAMA SENSOR :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_detail_error">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  DETAIL ERROR    :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_baudrate">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  BAUDRATE        : </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_databits">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  DATABITS           :</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_nama_sensor_value">
+         <property name="font">
+          <font>
+           <family>Ubuntu</family>
+           <pointsize>18</pointsize>
+           <weight>9</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  NAMA SENSOR</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_detail_error_value">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  DETAIL ERROR</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_baudrate_value">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  BAUDRATE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_databits_value">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  DATABITS</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_parity">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  PARITY             :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_stopbits">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  STOPBITS        :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_ip">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  IP                        :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_port">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>  PORT                :</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_parity_value">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>PARITY</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_stopbits_value">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>STOPBITS</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_ip_value">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>IP</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_port_value">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);
+font: 75 18pt &quot;Ubuntu&quot;;</string>
+         </property>
+         <property name="text">
+          <string>PORT</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>174</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_6">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="margin">
+       <number>3</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="pushButton_19">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="contextMenuPolicy">
+         <enum>Qt::NoContextMenu</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(90, 90, 90);</string>
+        </property>
+        <property name="text">
+         <string>OK</string>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
