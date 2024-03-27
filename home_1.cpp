@@ -367,6 +367,9 @@ void home_1::updateStatus()
                 if(nama_channel.contains("Vertical")){
                     QString parsing_gyro = QString("%1").arg(channelname);
 
+                    valuepush.at(baris)->setText(parsing_gyro);
+                    valuepush.at(baris)->setStyleSheet("background-color:yellow ; font:10pt ; color: rgb(0, 0, 0)");
+                    /*
                     if(parsing_gyro.size()==1)
                     {
                         valuepush.at(baris)->setText("H: - \n P: - \n R: -");
@@ -381,7 +384,7 @@ void home_1::updateStatus()
                        valuepush.at(baris)->setStyleSheet("background-color:yellow ; font:10pt ; color: rgb(0, 0, 0)");
                        qDebug()<<"masuk gyro if"<<channelname;
                     }
-
+                    */
                 }
                 else{
                 valuepush.at(baris)->setText(QString("%1").arg(channelname));
@@ -417,6 +420,9 @@ void home_1::updateStatus()
                 if(nama_channel.contains("Vertical")){
                     QString parsing_gyro = QString("%1").arg(channelname);
 
+                    valuepush.at(baris)->setText(parsing_gyro);
+                    valuepush.at(baris)->setStyleSheet("background-color:red ; font:10pt ; color: rgb(0, 0, 0)");
+                    /*
                     if(parsing_gyro.size()==1)
                     {
                         valuepush.at(baris)->setText("H: - \n P: - \n R: -");
@@ -431,7 +437,7 @@ void home_1::updateStatus()
                        valuepush.at(baris)->setStyleSheet("background-color:red ; font:10pt ; color: rgb(0, 0, 0)");
                        qDebug()<<"masuk gyro if"<<channelname;
                     }
-
+                    */
                 }
                 else{
                 valuepush.at(baris)->setText(QString("%1").arg(channelname));
