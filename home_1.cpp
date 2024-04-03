@@ -93,7 +93,7 @@ home_1::home_1(QWidget *parent) :
 
     updateTimer=new QTimer(this);
     connect(updateTimer,SIGNAL(timeout()),this,SLOT(updateStatus()));
-    updateTimer->start(250);
+    updateTimer->start(1250);
 
     /*tambahan miftah*/
     qDebug()<<"const";
@@ -467,7 +467,7 @@ void home_1::updateStatus()
         }
 
     }
-    updateTimer->start(250);
+    updateTimer->start(1250);
 }
 
 void home_1::on_pushButton_2_clicked()
