@@ -388,6 +388,9 @@ void home_2::updateStatus()
                 if(nama_channel.contains("Vertical")){
                     QString parsing_gyro = QString("%1").arg(channelname);
 
+                    valuepush1.at(baris)->setText(parsing_gyro);
+                    valuepush1.at(baris)->setStyleSheet("background-color:red ; font:10pt ; color: rgb(0, 0, 0)");
+                    /*
                     if(parsing_gyro.size()==1)
                     {
                         valuepush1.at(baris)->setText("H: - \n P: - \n R: -");
@@ -402,7 +405,7 @@ void home_2::updateStatus()
                        valuepush1.at(baris)->setStyleSheet("background-color:red ; font:10pt ; color: rgb(0, 0, 0)");
                        qDebug()<<"masuk gyro if"<<channelname;
                     }
-
+                    */
                 }
                 else{
                 valuepush1.at(baris)->setText(QString("%1").arg(channelname));
