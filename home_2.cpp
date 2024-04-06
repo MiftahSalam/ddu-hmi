@@ -112,8 +112,10 @@ void home_2::on_back_clicked()
 void home_2::on_channel15_clicked()
 {
     id_channel="15";
-    goto_channel_simulation_string(id_channel);
-    goto_channel_simulation();
+//    goto_channel_simulation_string(id_channel);
+//    goto_channel_simulation();
+    goto_channel_output_string(id_channel);
+    goto_channel_output();
     qDebug()<<"kirim id_channel "<<id_channel;
 }
 
