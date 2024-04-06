@@ -40,9 +40,8 @@ void control_sensor::setup_sensor_string(QString id_channel)
 
 	ui->label_channel->setText(QString("CHANNEL %1").arg(id_channel));
 	ui->label_nama_sensor_value->setText(name);
-	ui->label_port_value->setText(portname);
 	ui->label_databits_value->setText(dbits);
-	ui->label_stopbits_value->setText(sbits);
+    ui->label_portname_value->setText(portname);
 	ui->label_parity_value->setText(parity);
 	ui->label_ip_value->setText(ips);
 	ui->label_port_value->setText(ports);

@@ -29,7 +29,6 @@
       <font>
        <family>Ubuntu</family>
        <pointsize>20</pointsize>
-       <weight>9</weight>
        <italic>false</italic>
        <bold>false</bold>
       </font>
@@ -62,7 +61,6 @@ font: 75 20pt &quot;Ubuntu&quot;;</string>
           <font>
            <family>Ubuntu</family>
            <pointsize>18</pointsize>
-           <weight>9</weight>
            <italic>false</italic>
            <bold>false</bold>
           </font>
@@ -122,7 +120,6 @@ font: 75 18pt &quot;Ubuntu&quot;;</string>
           <font>
            <family>Ubuntu</family>
            <pointsize>18</pointsize>
-           <weight>9</weight>
            <italic>false</italic>
            <bold>false</bold>
           </font>
@@ -188,13 +185,13 @@ font: 75 18pt &quot;Ubuntu&quot;;</string>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_stopbits">
+        <widget class="QLabel" name="label_portname">
          <property name="styleSheet">
           <string notr="true">color: rgb(255, 255, 255);
 font: 75 18pt &quot;Ubuntu&quot;;</string>
          </property>
          <property name="text">
-          <string>  STOPBITS        :</string>
+          <string>PORTNAME:</string>
          </property>
         </widget>
        </item>
@@ -239,7 +236,7 @@ font: 75 18pt &quot;Ubuntu&quot;;</string>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_stopbits_value">
+        <widget class="QLabel" name="label_portname_value">
          <property name="styleSheet">
           <string notr="true">color: rgb(255, 255, 255);
 font: 75 18pt &quot;Ubuntu&quot;;</string>
@@ -293,7 +290,7 @@ font: 75 18pt &quot;Ubuntu&quot;;</string>
       <property name="spacing">
        <number>0</number>
       </property>
-      <property name="margin">
+      <property name="margin" stdset="0">
        <number>3</number>
       </property>
       <item>
