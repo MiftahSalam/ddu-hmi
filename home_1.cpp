@@ -205,8 +205,8 @@ void home_1::on_channel11_clicked()
 void home_1::on_channel12_clicked()
 {
     id_channel="12";
-//    goto_channel_output_string(id_channel);
-//    goto_channel_output();
+    goto_channel_output_string(id_channel);
+    goto_channel_output();
     qDebug()<<"kirim id_channel syncro "<<id_channel;
 }
 
