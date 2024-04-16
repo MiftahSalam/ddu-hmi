@@ -37,11 +37,11 @@ void program_channel_output_special::create_database()
 {
 	QSqlQuery query;
 
-//    query.prepare(QString("UPDATE ddu_ch SET cur_restarted_stat='1' where ch_id=%1;").arg(id_channel_input));
-//    query.exec();
-//    qDebug()<<"debug restarted"<<query.lastQuery();
+    query.prepare(QString("UPDATE ddu_ch SET cur_restarted_stat='1' where ch_id=%1;").arg(id_channel_input));
+    query.exec();
+    qDebug()<<"debug restarted"<<query.lastQuery();
 
-//    query.clear();
+    query.clear();
 
     QString ambil_baudrate = ui->combo_baudrate->currentText();
     QString ambil_databit = ui->combo_databits->currentText();
