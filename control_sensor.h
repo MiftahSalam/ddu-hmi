@@ -20,10 +20,12 @@ private slots:
     void setup_sensor_string(QString id_channel);
 
 signals:
-    void back_to_home_1();
+    void back_to_home(int page);
 
 private:
     Ui::control_sensor *ui;
+
+    QString chId;
 };
 
 #endif // CONTROL_SENSOR_H

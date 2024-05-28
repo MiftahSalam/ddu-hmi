@@ -56,7 +56,8 @@ void program_channel_output::chan_assign(QString indeksString)
 
 void program_channel_output::on_pushButton_19_clicked()
 {
-    back_to_home_1();
+    int idCh = id_channel_input.toInt();
+    back_to_home(idCh > 14 ? 2 : 1);
     create_database();
 }
 

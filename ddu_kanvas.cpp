@@ -40,11 +40,11 @@ ddu_kanvas::ddu_kanvas(QWidget *parent) :
     connect(home_satu,SIGNAL(go_to_home_2()),SLOT(go_to_home_2_slot()));
     connect(home_dua,SIGNAL(go_to_home_1()),SLOT(go_to_home_1_slot()));
 
-    connect(channel_input_clicked,SIGNAL(back_to_home_2()),SLOT(go_to_home_2_slot()));
-    connect(channel_output_clicked,SIGNAL(back_to_home_1()),SLOT(go_to_home_1_slot()));
-    connect(channel_output_special_clicked,SIGNAL(back_to_home_1()),SLOT(go_to_home_1_slot()));
-    connect(control_sensor_clicked,SIGNAL(back_to_home_1()),SLOT(go_to_home_1_slot()));
-    connect(channel_simulation_clicked,SIGNAL(back_to_home_2()),SLOT(go_to_home_2_slot()));
+    connect(channel_input_clicked,SIGNAL(back_to_home(int)),SLOT(go_to_home_slot(int)));
+    connect(channel_output_clicked,SIGNAL(back_to_home(int)),SLOT(go_to_home_slot(int)));
+    connect(channel_output_special_clicked,SIGNAL(back_to_home(int)),SLOT(go_to_home_slot(int)));
+    connect(control_sensor_clicked,SIGNAL(back_to_home(int)),SLOT(go_to_home_slot(int)));
+    connect(channel_simulation_clicked,SIGNAL(back_to_home(int)),SLOT(go_to_home_slot(int)));
 
     connect(home_satu,SIGNAL(goto_channel_output()),SLOT(program_channel_output_slot()));
     connect(home_satu,SIGNAL(goto_channel_output_string(QString)),channel_output_clicked,SLOT(setup_program_channel_output(QString)));
@@ -66,6 +66,20 @@ ddu_kanvas::ddu_kanvas(QWidget *parent) :
 ddu_kanvas::~ddu_kanvas()
 {
     delete ui;
+}
+
+void ddu_kanvas::go_to_home_slot(int page)
+{
+    switch (page) {
+    case 1:
+        go_to_home_1_slot();
+        break;
+    case 2:
+        go_to_home_2_slot();
+        break;
+    default:
+        break;
+    }
 }
 
 void ddu_kanvas::go_to_home_1_slot()

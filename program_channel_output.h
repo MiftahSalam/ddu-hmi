@@ -23,7 +23,7 @@ private:
     void create_database();
 
 signals:
-    void back_to_home_1();
+    void back_to_home(int page);
 
 private slots:
     void on_pushButton_19_clicked();

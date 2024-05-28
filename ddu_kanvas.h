@@ -34,6 +34,7 @@ private:
     program_channel_simulation * channel_simulation_clicked;
 
 private slots:
+    void go_to_home_slot(int page);
     void go_to_home_1_slot();
     void go_to_home_2_slot();
     void program_channel_input_slot();

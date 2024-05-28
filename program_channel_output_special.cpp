@@ -29,7 +29,7 @@ program_channel_output_special::~program_channel_output_special()
 
 void program_channel_output_special::on_pushButton_19_clicked()
 {
-    back_to_home_1();
+    back_to_home(1);
     create_database();
 }
 

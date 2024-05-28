@@ -18,7 +18,8 @@ program_channel_input::~program_channel_input()
 
 void program_channel_input::on_pushButton_19_clicked()
 {
-    back_to_home_2();
+    int idCh = id_channel_input.toInt();
+    back_to_home(idCh < 14 ? 1 : 2);
     create_database();
 }
 

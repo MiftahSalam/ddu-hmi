@@ -17,11 +17,13 @@ control_sensor::~control_sensor()
 
 void control_sensor::on_pushButton_19_clicked()
 {
-    back_to_home_1();
+    int idCh = chId.toInt();
+    back_to_home(idCh < 15 ? 1 : 2);
 }
 
 void control_sensor::setup_sensor_string(QString id_channel)
 {
+    chId = id_channel;
 	QSqlQuery query;
 
 	query.prepare(QString("SELECT * FROM ddu_ch where ch_id= %1;").arg(id_channel));
