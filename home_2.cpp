@@ -444,6 +444,10 @@ void home_2::updateStatus()
 
 void home_2::on_pushButton_2_clicked()
 {
+    system("sudo shutdown -P now");
+
+    return;
+
     bool shutdown_works = false;
     bool gnome_power1 = false;
     bool gnome_power2 = false;
