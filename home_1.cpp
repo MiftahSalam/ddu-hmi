@@ -472,7 +472,7 @@ void home_1::updateStatus()
 
 void home_1::on_pushButton_2_clicked()
 {
-    system("sudo shutdown -P now");
+    system("systemctl poweroff");
 
     return;
 
