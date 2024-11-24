@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import skm.ddu.mlh.views.layouts.HomePage;
 
 import java.io.IOException;
 
@@ -17,8 +18,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        // scene = new Scene(loadFXML("primary"), 640, 480);
+        HomePage homePage = new HomePage();
+        scene = new Scene(homePage);
         stage.setScene(scene);
+        // stage.setFullScreen(true);
         stage.show();
     }
 
