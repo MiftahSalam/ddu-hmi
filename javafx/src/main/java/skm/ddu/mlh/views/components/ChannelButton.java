@@ -3,7 +3,9 @@ package skm.ddu.mlh.views.components;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class ChannelButton extends Button {
     public enum ChannelButtonRole {
         CH_NUMBER,
@@ -26,7 +28,7 @@ public class ChannelButton extends Button {
                     public void handle(ActionEvent event) {
                         // TODO: call setting page
 
-                        System.out.println("button ch: " + chNum + ", role: " + role.name());
+                        log.debug("button ch: " + chNum + ", role: " + role.name());
                     };
                 };
                 break;
@@ -35,7 +37,7 @@ public class ChannelButton extends Button {
                     @Override
                     public void handle(ActionEvent event) {
                         // TODO: call info page
-                        System.out.println("button ch: " + chNum + ", role: " + role.name());
+                        log.debug("button ch: " + chNum + ", role: " + role.name());
                     };
                 };
                 break;
@@ -43,7 +45,7 @@ public class ChannelButton extends Button {
                 click = new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        System.out.println("button ch: " + chNum + ", role: " + role.name());
+                        log.debug("button ch: " + chNum + ", role: " + role.name());
                     };
                 };
                 break;
