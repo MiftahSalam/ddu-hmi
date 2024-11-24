@@ -92,6 +92,54 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>
+					org.apache.maven.plugins
+				</groupId>
+				<artifactId>
+					maven-assembly-plugin
+				</artifactId>
+				<version>
+					3.2.0
+				</version>
+				<executions>
+					<execution>
+						<phase>
+							package
+						</phase>
+						<goals>
+							<goal>
+								single
+							</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>
+							jar-with-dependencies
+						</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<index>
+							true
+						</index>
+						<manifest>
+							<addClasspath>
+								true
+							</addClasspath>
+							<mainClass>
+								skm.ddu.mlh.App
+							</mainClass>
+						</manifest>
+						<manifestEntries>
+							<mode>
+								development
+							</mode>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>
