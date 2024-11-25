@@ -17,6 +17,8 @@ public class ChannelButton extends Button {
     private ChannelButtonRole chRole;
 
     public ChannelButton(int number, ChannelButtonRole role) {
+        setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
         chNum = number;
         chRole = role;
 
