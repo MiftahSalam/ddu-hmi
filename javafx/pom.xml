@@ -6,7 +6,7 @@
 		skm.ddu.mlh
 	</groupId>
 	<artifactId>
-		javafx
+		ddu
 	</artifactId>
 	<version>
 		1.0
@@ -36,6 +36,9 @@
 			<version>
 				22.0.1
 			</version>
+			<scope>
+				provided
+			</scope>
 		</dependency>
 		<dependency>
 			<groupId>
@@ -47,6 +50,9 @@
 			<version>
 				22.0.1
 			</version>
+			<scope>
+				provided
+			</scope>
 		</dependency>
 		<!-- SLF4J API -->
 		<dependency>
