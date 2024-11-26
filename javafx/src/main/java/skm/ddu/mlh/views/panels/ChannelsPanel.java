@@ -7,6 +7,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import skm.ddu.mlh.shared.constants.GlobalConstant;
 import skm.ddu.mlh.views.components.ChannelRow;
+import skm.ddu.mlh.views.components.ChannelButton.ChannelButtonState;
 
 public class ChannelsPanel extends VBox {
     private final int CHANNELS_PER_PAGE = GlobalConstant.CHANNEL_COUNT / GlobalConstant.CHANNEL_PAGE;
@@ -30,6 +31,9 @@ public class ChannelsPanel extends VBox {
         ChannelRow col1 = new ChannelRow(index, String.format("%d\n(IN)", index + 1));
         ChannelRow col2 = new ChannelRow(index + CHANNELS_PER_COLUMN,
                 String.format("%d\n(IN)", index + CHANNELS_PER_COLUMN + 1));
+
+        col1.setState(index % 2 == 0 ? ChannelButtonState.CH_AVAILABLE : ChannelButtonState.CH_NOT_AVAILABLE);
+        col2.setState(index % 2 == 0 ? ChannelButtonState.CH_AVAILABLE : ChannelButtonState.CH_NOT_AVAILABLE);
 
         HBox.setHgrow(col1, Priority.ALWAYS);
         HBox.setHgrow(col2, Priority.ALWAYS);

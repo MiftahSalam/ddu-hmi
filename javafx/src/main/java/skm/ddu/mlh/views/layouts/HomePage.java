@@ -29,9 +29,16 @@ public class HomePage extends HBox {
         boxButton.prefHeightProperty().bind(boxBar.heightProperty().multiply(0.3));
 
         Region spacer = new Region();
-        Button pageButton = new Button("Next");
-        Button exitButton = new Button("Shutdown");
+        Button pageButton = new Button("NEXT");
+        Button exitButton = new Button("SHUTDOWN");
 
+        exitButton.getStyleClass().add("notAvail");
+
+        String curStylePage = pageButton.getStyle() + "-fx-background-color: green; -fx-font-size: 14pt;";
+        String curStyleExit = exitButton.getStyle() + "-fx-font-size: 14pt;";
+
+        pageButton.setStyle(curStylePage);
+        exitButton.setStyle(curStyleExit);
         pageButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         exitButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 

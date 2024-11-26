@@ -14,12 +14,20 @@ public class ChannelButton extends Button {
         CH_VALUE
     }
 
+    public enum ChannelButtonState {
+        CH_AVAILABLE,
+        CH_NOT_AVAILABLE,
+        CH_DISABLE
+    }
+
     private int chNum;
     private ChannelButtonRole chRole;
 
     public ChannelButton(int number, ChannelButtonRole role) {
         setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         setTextAlignment(TextAlignment.CENTER);
+
+        setState(ChannelButtonState.CH_NOT_AVAILABLE);
 
         chNum = number;
         chRole = role;
@@ -56,5 +64,18 @@ public class ChannelButton extends Button {
         }
 
         setOnAction(click);
+    }
+
+    public void setState(ChannelButtonState state) {
+        switch (state) {
+            case CH_AVAILABLE:
+                getStyleClass().remove("notAvail");
+                getStyleClass().add("avail");
+                break;
+            default:
+                getStyleClass().remove("avail");
+                getStyleClass().add("notAvail");
+                break;
+        }
     }
 }

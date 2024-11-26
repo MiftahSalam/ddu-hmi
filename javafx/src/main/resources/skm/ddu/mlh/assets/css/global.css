@@ -6,6 +6,16 @@
 	-fx-text-fill: white;
 }
 
-#notAvail {
+.button {
+    -fx-border-color: black;
+}
+
+.notAvail {
 	-fx-background-color: red;
+	-fx-text-fill: white;
+}
+
+.avail {
+	-fx-background-color: yellow;
+	-fx-text-fill: black;
 }
