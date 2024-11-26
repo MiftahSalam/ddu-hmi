@@ -8,18 +8,33 @@ import javafx.scene.layout.VBox;
 import skm.ddu.mlh.views.panels.ChannelsPanel;
 
 public class HomePage extends HBox {
+    private ChannelsPanel chPannel;
+    private ChannelsPanel chPannel1;
+    Button pageButton;
+    private int currenPage = 0;
 
     public HomePage() {
-        ChannelsPanel ch = new ChannelsPanel();
-        VBox rightBar = createRightBar();
+        try {
+            chPannel = new ChannelsPanel(0, 7);
+            chPannel1 = new ChannelsPanel(13, 19);
 
-        rightBar.prefHeightProperty().bind(ch.heightProperty().multiply(0.2));
-        rightBar.prefWidthProperty().bind(ch.widthProperty().multiply(0.2));
+            VBox rightBar = createRightBar();
 
-        setHgrow(ch, Priority.ALWAYS);
-        setHgrow(rightBar, Priority.SOMETIMES);
+            rightBar.prefHeightProperty().bind(chPannel.heightProperty().multiply(0.2));
+            rightBar.prefWidthProperty().bind(chPannel.widthProperty().multiply(0.2));
 
-        super.getChildren().addAll(ch, rightBar);
+            setHgrow(chPannel, Priority.ALWAYS);
+            setHgrow(chPannel1, Priority.ALWAYS);
+            setHgrow(rightBar, Priority.SOMETIMES);
+
+            super.getChildren().add(0, chPannel);
+            ;
+            super.getChildren().add(1, rightBar);
+            ;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     private VBox createRightBar() {
@@ -29,7 +44,7 @@ public class HomePage extends HBox {
         boxButton.prefHeightProperty().bind(boxBar.heightProperty().multiply(0.3));
 
         Region spacer = new Region();
-        Button pageButton = new Button("NEXT");
+        pageButton = new Button("NEXT");
         Button exitButton = new Button("SHUTDOWN");
 
         exitButton.getStyleClass().add("notAvail");
@@ -42,6 +57,10 @@ public class HomePage extends HBox {
         pageButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         exitButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
+        pageButton.setOnMouseClicked(event -> {
+            onPageClicked();
+        });
+
         VBox.setVgrow(spacer, Priority.ALWAYS);
         VBox.setVgrow(pageButton, Priority.ALWAYS);
         VBox.setVgrow(exitButton, Priority.ALWAYS);
@@ -51,5 +70,22 @@ public class HomePage extends HBox {
         boxBar.getChildren().addAll(spacer, boxButton);
 
         return boxBar;
+    }
+
+    private void onPageClicked() {
+        System.out.println("onPageClicked");
+        ChannelsPanel channelsPanel;
+        if (currenPage == 0) {
+            channelsPanel = chPannel1;
+            currenPage = 1;
+            pageButton.setText("BACK");
+        } else {
+            channelsPanel = chPannel;
+            currenPage = 0;
+            pageButton.setText("NEXT");
+        }
+
+        super.getChildren().remove(0);
+        super.getChildren().add(0, channelsPanel);
     }
 }

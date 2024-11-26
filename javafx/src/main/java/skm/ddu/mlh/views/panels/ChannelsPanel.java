@@ -11,14 +11,19 @@ import skm.ddu.mlh.views.components.ChannelButton.ChannelButtonState;
 
 public class ChannelsPanel extends VBox {
     private final int CHANNELS_PER_PAGE = GlobalConstant.CHANNEL_COUNT / GlobalConstant.CHANNEL_PAGE;
-    private final int CHANNELS_PER_COLUMN = CHANNELS_PER_PAGE / 2;
+    private final int CHANNELS_PER_COLUMN;
 
-    public ChannelsPanel() {
+    public ChannelsPanel(int chStart, int chEnd) throws Exception {
+        if (chEnd <= chStart) {
+            throw new Exception("invalid channel start index");
+        }
+
         HBox label = generateChannelLabelRow();
         setVgrow(label, Priority.ALWAYS);
         super.getChildren().add(label);
 
-        for (int i = 0; i < CHANNELS_PER_COLUMN; i++) {
+        CHANNELS_PER_COLUMN = chEnd - chStart;
+        for (int i = chStart; i < chStart + CHANNELS_PER_COLUMN; i++) {
             HBox row = generateChannelRows(i);
             setVgrow(row, Priority.ALWAYS);
             super.getChildren().add(row);
