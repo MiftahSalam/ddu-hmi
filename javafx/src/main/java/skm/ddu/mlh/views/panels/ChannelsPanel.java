@@ -5,49 +5,37 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import skm.ddu.mlh.shared.constants.GlobalConstant;
 import skm.ddu.mlh.views.components.ChannelRow;
 
 public class ChannelsPanel extends VBox {
+    private final int CHANNELS_PER_PAGE = GlobalConstant.CHANNEL_COUNT / GlobalConstant.CHANNEL_PAGE;
+    private final int CHANNELS_PER_COLUMN = CHANNELS_PER_PAGE / 2;
+
     public ChannelsPanel() {
         HBox label = generateChannelLabelRow();
-        HBox col1 = generateChannelRows1();
-        HBox col2 = generateChannelRows2();
-
         setVgrow(label, Priority.ALWAYS);
-        setVgrow(col1, Priority.ALWAYS);
-        setVgrow(col2, Priority.ALWAYS);
-
         super.getChildren().add(label);
-        super.getChildren().add(col1);
-        super.getChildren().add(col2);
+
+        for (int i = 0; i < CHANNELS_PER_COLUMN; i++) {
+            HBox row = generateChannelRows1(i);
+            setVgrow(row, Priority.ALWAYS);
+            super.getChildren().add(row);
+        }
     }
 
-    private HBox generateChannelRows1() {
+    private HBox generateChannelRows1(int index) {
         HBox box = new HBox();
 
-        ChannelRow ch1 = new ChannelRow();
-        ChannelRow ch2 = new ChannelRow();
+        ChannelRow col1 = new ChannelRow(index, String.format("%d\n(IN)", index + 1));
+        ChannelRow col2 = new ChannelRow(index + CHANNELS_PER_COLUMN,
+                String.format("%d\n(IN)", index + CHANNELS_PER_COLUMN + 1));
 
-        HBox.setHgrow(ch1, Priority.ALWAYS);
-        HBox.setHgrow(ch2, Priority.ALWAYS);
+        HBox.setHgrow(col1, Priority.ALWAYS);
+        HBox.setHgrow(col2, Priority.ALWAYS);
 
-        box.getChildren().add(ch1);
-        box.getChildren().add(ch2);
-
-        return box;
-    }
-
-    private HBox generateChannelRows2() {
-        HBox box = new HBox();
-
-        ChannelRow ch1 = new ChannelRow();
-        ChannelRow ch2 = new ChannelRow();
-
-        HBox.setHgrow(ch1, Priority.ALWAYS);
-        HBox.setHgrow(ch2, Priority.ALWAYS);
-
-        box.getChildren().add(ch1);
-        box.getChildren().add(ch2);
+        box.getChildren().add(col1);
+        box.getChildren().add(col2);
 
         return box;
     }

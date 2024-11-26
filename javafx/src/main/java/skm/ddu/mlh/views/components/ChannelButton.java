@@ -3,6 +3,7 @@ package skm.ddu.mlh.views.components;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.text.TextAlignment;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -18,6 +19,7 @@ public class ChannelButton extends Button {
 
     public ChannelButton(int number, ChannelButtonRole role) {
         setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        setTextAlignment(TextAlignment.CENTER);
 
         chNum = number;
         chRole = role;

@@ -5,11 +5,15 @@ import javafx.scene.layout.Priority;
 import skm.ddu.mlh.views.components.ChannelButton.ChannelButtonRole;
 
 public class ChannelRow extends HBox {
-    public ChannelRow() {
+    private int rowNumber;
+
+    public ChannelRow(int row, String label) {
+        rowNumber = row;
+
         setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
         ChannelButton chNum = new ChannelButton(1, ChannelButtonRole.CH_NUMBER);
-        chNum.setText("Channel 1");
+        chNum.setText(label);
         setHgrow(chNum, Priority.ALWAYS);
 
         ChannelButton chName = new ChannelButton(1, ChannelButtonRole.CH_NAME);
