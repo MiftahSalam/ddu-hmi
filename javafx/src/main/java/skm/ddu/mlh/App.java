@@ -22,6 +22,8 @@ public class App extends Application {
         // scene = new Scene(loadFXML("primary"), 640, 480);
         HomePage homePage = new HomePage();
         scene = new Scene(homePage);
+        String cssPath = App.class.getResource("assets/css/global.css").toExternalForm();
+        scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         // stage.setFullScreen(true);
         stage.show();

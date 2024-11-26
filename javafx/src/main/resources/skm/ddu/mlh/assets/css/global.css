@@ -1,3 +1,11 @@
+.root {
+	-fx-background-color: black;
+}
+
+.label-channel {
+	-fx-text-fill: white;
+}
+
 #notAvail {
 	-fx-background-color: red;
 }

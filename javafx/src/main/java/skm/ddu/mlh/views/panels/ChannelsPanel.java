@@ -18,13 +18,13 @@ public class ChannelsPanel extends VBox {
         super.getChildren().add(label);
 
         for (int i = 0; i < CHANNELS_PER_COLUMN; i++) {
-            HBox row = generateChannelRows1(i);
+            HBox row = generateChannelRows(i);
             setVgrow(row, Priority.ALWAYS);
             super.getChildren().add(row);
         }
     }
 
-    private HBox generateChannelRows1(int index) {
+    private HBox generateChannelRows(int index) {
         HBox box = new HBox();
 
         ChannelRow col1 = new ChannelRow(index, String.format("%d\n(IN)", index + 1));
@@ -56,26 +56,24 @@ public class ChannelsPanel extends VBox {
     private HBox generateLabelRow() {
         HBox box = new HBox();
 
-        Label chNum = new Label();
-        chNum.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        chNum.setText("CHANNEL");
-        chNum.setAlignment(Pos.CENTER);
-        HBox.setHgrow(chNum, Priority.ALWAYS);
-
-        Label chName = new Label();
-        chName.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        chName.setText("SENSOR");
-        chName.setAlignment(Pos.CENTER);
-        HBox.setHgrow(chName, Priority.ALWAYS);
-
-        Label chVal = new Label();
-        chVal.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        chVal.setText("VALUE");
-        chVal.setAlignment(Pos.CENTER);
-        HBox.setHgrow(chVal, Priority.ALWAYS);
+        Label chNum = createLabel("CHANNEL");
+        Label chName = createLabel("SENSOR");
+        Label chVal = createLabel("VALUE");
 
         box.getChildren().addAll(chNum, chName, chVal);
 
         return box;
+    }
+
+    private Label createLabel(String text) {
+        Label label = new Label();
+        label.getStyleClass().add("label-channel");
+        label.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        label.setText(text);
+        label.setAlignment(Pos.CENTER);
+
+        HBox.setHgrow(label, Priority.ALWAYS);
+
+        return label;
     }
 }
