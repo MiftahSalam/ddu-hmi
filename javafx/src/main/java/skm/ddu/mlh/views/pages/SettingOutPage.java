@@ -1,5 +1,6 @@
 package skm.ddu.mlh.views.pages;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,6 +12,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
+import skm.ddu.mlh.App;
 
 public class SettingOutPage implements Initializable {
 
@@ -64,5 +66,14 @@ public class SettingOutPage implements Initializable {
 
         comboJenis.getItems().addAll("GP", "HE");
         comboJenis.setValue(comboJenis.getItems().get(0));
+
+        buttonOK.setOnAction(event -> {
+            try {
+                App.selectHomePage();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        });
     }
 }

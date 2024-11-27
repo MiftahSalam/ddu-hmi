@@ -1,10 +1,13 @@
 package skm.ddu.mlh.views.components;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.text.TextAlignment;
 import lombok.extern.slf4j.Slf4j;
+import skm.ddu.mlh.App;
 
 @Slf4j
 public class ChannelButton extends Button {
@@ -41,6 +44,13 @@ public class ChannelButton extends Button {
                         // TODO: call setting page
 
                         log.debug("button ch: " + chNum + ", role: " + role.name());
+
+                        try {
+                            App.selectChannelInfoPage();
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
                     };
                 };
                 break;
@@ -50,6 +60,13 @@ public class ChannelButton extends Button {
                     public void handle(ActionEvent event) {
                         // TODO: call info page
                         log.debug("button ch: " + chNum + ", role: " + role.name());
+
+                        try {
+                            App.selectSettingOutPage();
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
                     };
                 };
                 break;
