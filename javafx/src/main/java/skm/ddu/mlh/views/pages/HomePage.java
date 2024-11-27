@@ -1,4 +1,4 @@
-package skm.ddu.mlh.views.layouts;
+package skm.ddu.mlh.views.pages;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;

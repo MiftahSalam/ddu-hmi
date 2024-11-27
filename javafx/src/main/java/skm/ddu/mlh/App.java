@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import skm.ddu.mlh.shared.configs.ServerConfig;
-import skm.ddu.mlh.views.layouts.HomePage;
+import skm.ddu.mlh.views.pages.HomePage;
 
 import java.io.IOException;
 

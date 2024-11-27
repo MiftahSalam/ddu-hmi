@@ -1,4 +1,4 @@
-package skm.ddu.mlh.views.layouts;
+package skm.ddu.mlh.views.pages;
 
 import java.net.URL;
 import java.util.ResourceBundle;
