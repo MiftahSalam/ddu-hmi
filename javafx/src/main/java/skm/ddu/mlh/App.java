@@ -22,7 +22,7 @@ public class App extends Application {
         // scene = new Scene(loadFXML("primary"), 640, 480);
         // HomePage homePage = new HomePage();
         // scene = new Scene(homePage);
-        scene = new Scene(loadFXML("assets/components/SettingOutPage"), 640, 480);
+        scene = new Scene(loadFXML("assets/components/SettingInPage"), 640, 480);
         String cssPath = App.class.getResource("assets/css/global.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);

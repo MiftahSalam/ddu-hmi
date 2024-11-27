@@ -28,22 +28,17 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
+                              <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #505050; -fx-border-color: white; -fx-text-fill: white; -fx-font-weight: bold;" text="Priority" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
                               <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #505050; -fx-border-color: white; -fx-text-fill: white; -fx-font-weight: bold;" text="Baudrate" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
                               <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #505050; -fx-border-color: white; -fx-text-fill: white; -fx-font-weight: bold;" text="Databits" textAlignment="CENTER" VBox.vgrow="ALWAYS">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #505050; -fx-border-color: white; -fx-text-fill: white; -fx-font-weight: bold;" text="Parity" textAlignment="CENTER" VBox.vgrow="ALWAYS">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #505050; -fx-border-color: white; -fx-text-fill: white; -fx-font-weight: bold;" text="Stopbits" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -56,7 +51,6 @@
                               <ComboBox fx:id="comboNama" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
                               <ComboBox fx:id="comboBaudrate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
                               <ComboBox fx:id="comboDatabits" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
-                              <ComboBox fx:id="comboParity" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
                               <ComboBox fx:id="comboStopbits" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
@@ -70,22 +64,22 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #505050; -fx-text-fill: white; -fx-border-color: white; -fx-font-weight: bold;" text="Flow Control" VBox.vgrow="ALWAYS">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
                               <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #505050; -fx-text-fill: white; -fx-border-color: white; -fx-font-weight: bold;" text="Output Value" VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #505050; -fx-text-fill: white; -fx-border-color: white; -fx-font-weight: bold;" text="Assign" VBox.vgrow="ALWAYS">
+                              <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #505050; -fx-text-fill: white; -fx-border-color: white; -fx-font-weight: bold;" text="Parity" VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent; -fx-text-fill: white;" textFill="TRANSPARENT" VBox.vgrow="ALWAYS">
+                              <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #505050; -fx-text-fill: white; -fx-border-color: white; -fx-font-weight: bold;" text="Stopbits" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #505050; -fx-text-fill: white; -fx-border-color: white; -fx-font-weight: bold;" text="Flow Control" VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -109,7 +103,7 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <Button fx:id="buttonOK" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-text-fill: white; -fx-background-color: #505050; -fx-font-weight: bold;" text="OK" VBox.vgrow="ALWAYS">
+      <Button fx:id="buttonOK" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="button-ok" stylesheets="@../css/global.css" text="OK" VBox.vgrow="ALWAYS">
          <font>
             <Font size="16.0" />
          </font>
