@@ -2,12 +2,29 @@
 	-fx-background-color: black;
 }
 
+.combo-box {
+	-fx-font-size: 14pt;
+	-fx-font-weight: bold;
+}
+
 .label-channel {
 	-fx-text-fill: white;
 }
 
 .button {
     -fx-border-color: black;
+}
+
+.button-ok {
+    -fx-text-fill:  white;
+	-fx-background-color:  #505050;
+    -fx-font-weight:  bold;
+	-fx-font-size: 16pt;
+
+}
+
+.button-ok:hover {
+	-fx-font-size: 16pt;
 }
 
 .notAvail {

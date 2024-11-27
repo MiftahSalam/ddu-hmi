@@ -20,8 +20,9 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // scene = new Scene(loadFXML("primary"), 640, 480);
-        HomePage homePage = new HomePage();
-        scene = new Scene(homePage);
+        // HomePage homePage = new HomePage();
+        // scene = new Scene(homePage);
+        scene = new Scene(loadFXML("assets/components/SettingOutPage"), 640, 480);
         String cssPath = App.class.getResource("assets/css/global.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
