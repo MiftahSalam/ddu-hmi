@@ -3,26 +3,31 @@ package skm.ddu.mlh.views.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import skm.ddu.mlh.shared.constants.ChannelConstant;
 import skm.ddu.mlh.views.components.ChannelButton.ChannelButtonRole;
 import skm.ddu.mlh.views.components.ChannelButton.ChannelButtonState;
 
 public class ChannelRow extends HBox {
-    private int rowNumber;
-    private List<ChannelButton> buttons = new ArrayList<>();
+    private final int rowNumber;
+    private final ChannelConstant.CH_IO_FUNCTION ioFunction;
+    private final List<ChannelButton> buttons = new ArrayList<>();
 
-    public ChannelRow(int row, String label) {
+    public ChannelRow(int row) {
         rowNumber = row;
+        ioFunction = ChannelConstant.CH_IO_MAP.get(row);
 
         setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
         ChannelButton chNum = new ChannelButton(rowNumber, ChannelButtonRole.CH_NUMBER);
-        chNum.setText(label);
+        chNum.setText(String.format("%d\n(%s)", row + 1, ioFunction.toString()));
         setHgrow(chNum, Priority.ALWAYS);
 
         ChannelButton chName = new ChannelButton(rowNumber, ChannelButtonRole.CH_NAME);
-        chName.setText("Speedlog 1");
+        chName.setText(RandomStringUtils.randomAlphabetic(15));
         setHgrow(chName, Priority.ALWAYS);
 
         ChannelButton chVal = new ChannelButton(rowNumber, ChannelButtonRole.CH_VALUE);

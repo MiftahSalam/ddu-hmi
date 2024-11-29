@@ -10,7 +10,7 @@ public class ChannelConstant {
     private static final Pair<Integer, Integer> CH_IN_LIMIT = new Pair<Integer, Integer>(17,
             GlobalConstant.CHANNEL_COUNT - 1);
 
-    enum CH_IO_FUNCTION {
+    public enum CH_IO_FUNCTION {
         IN,
         OUT
     }

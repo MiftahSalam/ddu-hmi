@@ -33,9 +33,8 @@ public class ChannelsPanel extends VBox {
     private HBox generateChannelRows(int index) {
         HBox box = new HBox();
 
-        ChannelRow col1 = new ChannelRow(index, String.format("%d\n(IN)", index + 1));
-        ChannelRow col2 = new ChannelRow(index + CHANNELS_PER_COLUMN,
-                String.format("%d\n(IN)", index + CHANNELS_PER_COLUMN + 1));
+        ChannelRow col1 = new ChannelRow(index);
+        ChannelRow col2 = new ChannelRow(index + CHANNELS_PER_COLUMN);
 
         col1.setState(index % 2 == 0 ? ChannelButtonState.CH_AVAILABLE : ChannelButtonState.CH_NOT_AVAILABLE);
         col2.setState(index % 2 == 0 ? ChannelButtonState.CH_AVAILABLE : ChannelButtonState.CH_NOT_AVAILABLE);
