@@ -12,8 +12,10 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
+import lombok.extern.slf4j.Slf4j;
 import skm.ddu.mlh.App;
 
+@Slf4j
 public class SettingOutPage implements Initializable {
 
     @FXML
@@ -77,5 +79,9 @@ public class SettingOutPage implements Initializable {
                 e.printStackTrace();
             }
         });
+    }
+
+    public void setChannel(int chNum) {
+        log.debug("channel: " + chNum);
     }
 }

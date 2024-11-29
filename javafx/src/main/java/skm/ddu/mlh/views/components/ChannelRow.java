@@ -17,15 +17,15 @@ public class ChannelRow extends HBox {
 
         setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
-        ChannelButton chNum = new ChannelButton(1, ChannelButtonRole.CH_NUMBER);
+        ChannelButton chNum = new ChannelButton(rowNumber, ChannelButtonRole.CH_NUMBER);
         chNum.setText(label);
         setHgrow(chNum, Priority.ALWAYS);
 
-        ChannelButton chName = new ChannelButton(1, ChannelButtonRole.CH_NAME);
+        ChannelButton chName = new ChannelButton(rowNumber, ChannelButtonRole.CH_NAME);
         chName.setText("Speedlog 1");
         setHgrow(chName, Priority.ALWAYS);
 
-        ChannelButton chVal = new ChannelButton(1, ChannelButtonRole.CH_VALUE);
+        ChannelButton chVal = new ChannelButton(rowNumber, ChannelButtonRole.CH_VALUE);
         chVal.setText("2.3 kts");
         setHgrow(chVal, Priority.ALWAYS);
 

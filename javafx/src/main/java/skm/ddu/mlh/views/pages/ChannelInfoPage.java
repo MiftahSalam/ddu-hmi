@@ -5,8 +5,10 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import lombok.extern.slf4j.Slf4j;
 import skm.ddu.mlh.App;
 
+@Slf4j
 public class ChannelInfoPage {
 
     @FXML
@@ -22,4 +24,7 @@ public class ChannelInfoPage {
         }
     }
 
+    public void setChannel(int chNum) {
+        log.debug("channel: " + chNum);
+    }
 }

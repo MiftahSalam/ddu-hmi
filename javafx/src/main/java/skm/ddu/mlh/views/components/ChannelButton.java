@@ -46,7 +46,7 @@ public class ChannelButton extends Button {
                         log.debug("button ch: " + chNum + ", role: " + role.name());
 
                         try {
-                            App.selectChannelInfoPage();
+                            App.selectChannelInfoPage(chNum);
                         } catch (IOException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -62,7 +62,7 @@ public class ChannelButton extends Button {
                         log.debug("button ch: " + chNum + ", role: " + role.name());
 
                         try {
-                            App.selectSettingOutPage();
+                            App.selectSettingOutPage(chNum);
                         } catch (IOException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();

@@ -11,7 +11,9 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class SettingInPage implements Initializable {
 
     @FXML
@@ -64,5 +66,9 @@ public class SettingInPage implements Initializable {
 
         comboJenis.getItems().addAll("GP", "HE");
         comboJenis.setValue(comboJenis.getItems().get(0));
+    }
+
+    public void setChannel(int chNum) {
+        log.debug("channel: " + chNum);
     }
 }
