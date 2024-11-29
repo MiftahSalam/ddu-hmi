@@ -31,7 +31,7 @@ public class ChannelRow extends HBox {
         setHgrow(chName, Priority.ALWAYS);
 
         ChannelButton chVal = new ChannelButton(rowNumber, ChannelButtonRole.CH_VALUE);
-        chVal.setText("2.3 kts");
+        chVal.setText(RandomStringUtils.randomAlphabetic(15));
         setHgrow(chVal, Priority.ALWAYS);
 
         buttons.add(chNum);
@@ -39,6 +39,10 @@ public class ChannelRow extends HBox {
         buttons.add(chVal);
 
         super.getChildren().addAll(chNum, chName, chVal);
+
+        chNum.prefWidthProperty().bind(widthProperty().divide(3));
+        chName.prefWidthProperty().bind(widthProperty().divide(3));
+        chVal.prefWidthProperty().bind(widthProperty().divide(3));
     }
 
     public void setState(ChannelButtonState state) {
