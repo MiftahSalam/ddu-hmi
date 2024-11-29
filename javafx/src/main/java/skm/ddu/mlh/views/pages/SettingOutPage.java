@@ -59,10 +59,12 @@ public class SettingOutPage implements Initializable {
                 DoubleBinding multiply = Bindings.multiply(0.3, newValue.heightProperty());
                 multiply.addListener(val -> {
                     hbox1.setPadding(new Insets(0, 0, multiply.doubleValue(), 0));
+                    buttonOK.prefHeightProperty().bind(hbox1.heightProperty().multiply(0.05));
                 });
+                hbox1.setPadding(new Insets(0, 0, newValue.getHeight() * 0.3, 0));
+                buttonOK.setPrefHeight(hbox1.getHeight() * 0.05);
             }
         });
-        buttonOK.prefHeightProperty().bind(hbox1.heightProperty().multiply(0.05));
 
         comboJenis.getItems().addAll("GP", "HE");
         comboJenis.setValue(comboJenis.getItems().get(0));
