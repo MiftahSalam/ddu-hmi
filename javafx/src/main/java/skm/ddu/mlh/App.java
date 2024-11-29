@@ -17,14 +17,20 @@ public class App extends Application {
 
     private static Scene scene;
     private static HomePage homePage;
+    private static Parent settingInPage;
+    private static Parent settingOutPage;
+    private static Parent channelInfoPage;
 
     @Override
     public void start(Stage stage) throws IOException {
-        // scene = new Scene(loadFXML("primary"), 640, 480);
         homePage = new HomePage();
+        settingInPage = loadFXML("assets/components/SettingInPage");
+        settingOutPage = loadFXML("assets/components/SettingOutPage");
+        channelInfoPage = loadFXML("assets/components/ChannelInfoPage");
+
         scene = new Scene(homePage);
-        // scene = new Scene(loadFXML("assets/components/ChannelInfoPage"), 640, 480);
         String cssPath = App.class.getResource("assets/css/global.css").toExternalForm();
+
         scene.getStylesheets().add(cssPath);
         stage.setScene(scene);
         // stage.setFullScreen(true);
@@ -39,12 +45,16 @@ public class App extends Application {
         scene.setRoot(homePage);
     }
 
+    static public void selectSettingInPage() throws IOException {
+        scene.setRoot(settingInPage);
+    }
+
     static public void selectSettingOutPage() throws IOException {
-        scene.setRoot(loadFXML("assets/components/SettingOutPage"));
+        scene.setRoot(settingOutPage);
     }
 
     static public void selectChannelInfoPage() throws IOException {
-        scene.setRoot(loadFXML("assets/components/ChannelInfoPage"));
+        scene.setRoot(channelInfoPage);
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
