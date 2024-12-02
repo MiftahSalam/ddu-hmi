@@ -14,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import lombok.extern.slf4j.Slf4j;
 import skm.ddu.mlh.App;
+import skm.ddu.mlh.shared.constants.ChannelConstant.CH_JENIS_NMEA;
 
 @Slf4j
 public class SettingOutPage implements Initializable {
@@ -56,20 +57,8 @@ public class SettingOutPage implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        hbox1.sceneProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                DoubleBinding multiply = Bindings.multiply(0.3, newValue.heightProperty());
-                multiply.addListener(val -> {
-                    hbox1.setPadding(new Insets(0, 0, multiply.doubleValue(), 0));
-                    buttonOK.prefHeightProperty().bind(hbox1.heightProperty().multiply(0.05));
-                });
-                hbox1.setPadding(new Insets(0, 0, newValue.getHeight() * 0.3, 0));
-                buttonOK.setPrefHeight(hbox1.getHeight() * 0.05);
-            }
-        });
-
-        comboJenis.getItems().addAll("GP", "HE");
-        comboJenis.setValue(comboJenis.getItems().get(0));
+        setupResponsive();
+        setupComboJenis();
 
         buttonOK.setOnAction(event -> {
             try {
@@ -83,5 +72,28 @@ public class SettingOutPage implements Initializable {
 
     public void setChannel(int chNum) {
         log.debug("channel: " + chNum);
+    }
+
+    private void setupComboJenis() {
+        for (CH_JENIS_NMEA jenis : CH_JENIS_NMEA.values()) {
+            String name = jenis == CH_JENIS_NMEA.NONE ? "-" : jenis.name();
+
+            comboJenis.getItems().add(name);
+        }
+        comboJenis.setValue(comboJenis.getItems().get(0));
+    }
+
+    private void setupResponsive() {
+        hbox1.sceneProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                DoubleBinding multiply = Bindings.multiply(0.3, newValue.heightProperty());
+                multiply.addListener(val -> {
+                    hbox1.setPadding(new Insets(0, 0, multiply.doubleValue(), 0));
+                    buttonOK.prefHeightProperty().bind(hbox1.heightProperty().multiply(0.05));
+                });
+                hbox1.setPadding(new Insets(0, 0, newValue.getHeight() * 0.3, 0));
+                buttonOK.setPrefHeight(hbox1.getHeight() * 0.05);
+            }
+        });
     }
 }
