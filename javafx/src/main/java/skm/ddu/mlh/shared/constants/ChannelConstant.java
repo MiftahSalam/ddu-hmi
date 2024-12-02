@@ -107,6 +107,7 @@ public class ChannelConstant {
     }
 
     public enum CH_SERIAL_BAUDRATE {
+        NONE,
         B_2400,
         B_4800,
         B_9600,
