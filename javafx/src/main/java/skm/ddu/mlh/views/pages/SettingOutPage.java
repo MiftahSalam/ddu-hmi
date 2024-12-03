@@ -2,9 +2,11 @@ package skm.ddu.mlh.views.pages;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
@@ -27,6 +29,7 @@ import skm.ddu.mlh.shared.constants.ChannelConstant.CH_SERIAL_DATABITS;
 import skm.ddu.mlh.shared.constants.ChannelConstant.CH_SERIAL_FLOW_CONTROL;
 import skm.ddu.mlh.shared.constants.ChannelConstant.CH_SERIAL_PARITY;
 import skm.ddu.mlh.shared.constants.ChannelConstant.CH_SERIAL_STOPBITS;
+import skm.ddu.mlh.views.utils.ViewUtils;
 
 @Slf4j
 public class SettingOutPage implements Initializable {
@@ -111,12 +114,8 @@ public class SettingOutPage implements Initializable {
 
                 break;
             case JENIS:
-                for (CH_JENIS_NMEA jenis : CH_JENIS_NMEA.values()) {
-                    String name = jenis == CH_JENIS_NMEA.NONE ? "-" : jenis.name();
-
-                    comboAssignValue.getItems().add(name);
-                }
-                comboAssignValue.setValue(comboAssignValue.getItems().get(0));
+                List<String> list = Stream.of(CH_JENIS_NMEA.values()).map(Enum::name).collect(Collectors.toList());
+                ViewUtils.initCombobox(comboAssignValue, list, 0, "", "");
 
                 break;
             default:
@@ -125,12 +124,8 @@ public class SettingOutPage implements Initializable {
     }
 
     private void setupAssignChannel() {
-        for (CH_ASSIGN value : CH_ASSIGN.values()) {
-            String name = value == CH_ASSIGN.NONE ? "-" : value.name();
-
-            comboAssign.getItems().add(name);
-        }
-        comboAssign.setValue(comboValue.getItems().get(0));
+        List<String> list = Stream.of(CH_ASSIGN.values()).map(Enum::name).collect(Collectors.toList());
+        ViewUtils.initCombobox(comboAssign, list, 0, "", "");
 
         comboAssign.setOnAction(event -> {
             CH_ASSIGN assign;
@@ -145,75 +140,49 @@ public class SettingOutPage implements Initializable {
     }
 
     private void setupOutputValue() {
-        for (CH_NMEA_VALUE value : CH_NMEA_VALUE.values()) {
-            String name = value == CH_NMEA_VALUE.NONE ? "-" : value.name();
-
-            comboValue.getItems().add(name);
-        }
-        comboValue.setValue(comboValue.getItems().get(0));
+        List<String> list = Stream.of(CH_NMEA_VALUE.values()).map(Enum::name).collect(Collectors.toList());
+        ViewUtils.initCombobox(comboValue, list, 0, "", "");
     }
 
     private void setupSerialFlow() {
-        for (CH_SERIAL_FLOW_CONTROL flow : CH_SERIAL_FLOW_CONTROL.values()) {
-            String name = flow == CH_SERIAL_FLOW_CONTROL.NONE ? "-" : flow.name();
-
-            comboFlow.getItems().add(name);
-        }
-        comboFlow.setValue(comboFlow.getItems().get(0));
+        List<String> list = Stream.of(CH_SERIAL_FLOW_CONTROL.values()).map(Enum::name).collect(Collectors.toList());
+        ViewUtils.initCombobox(comboFlow, list, 0, "", "");
     }
 
     private void setupSerialParity() {
-        for (CH_SERIAL_PARITY parity : CH_SERIAL_PARITY.values()) {
-            String name = parity == CH_SERIAL_PARITY.NONE ? "-" : parity.name();
-
-            comboParity.getItems().add(name);
-        }
-        comboParity.setValue(comboParity.getItems().get(0));
+        List<String> list = Stream.of(CH_SERIAL_PARITY.values()).map(Enum::name).collect(Collectors.toList());
+        ViewUtils.initCombobox(comboParity, list, 0, "", "");
     }
 
     private void setupSerialStopBits() {
-        for (CH_SERIAL_STOPBITS stopbits : CH_SERIAL_STOPBITS.values()) {
-            String name = stopbits == CH_SERIAL_STOPBITS.NONE ? "-" : stopbits.name();
-
-            comboStopbits.getItems().add(name.replaceAll("STOP_", ""));
-        }
-        comboStopbits.setValue(comboStopbits.getItems().get(0));
+        List<String> list = Stream.of(CH_SERIAL_STOPBITS.values()).map(Enum::name).collect(Collectors.toList());
+        ViewUtils.initCombobox(comboStopbits, list, 0, "STOP_", "");
     }
 
     private void setupSerialDataBits() {
-        for (CH_SERIAL_DATABITS databits : CH_SERIAL_DATABITS.values()) {
-            String name = databits == CH_SERIAL_DATABITS.NONE ? "-" : databits.name();
-
-            comboDatabits.getItems().add(name.replaceAll("DATA_", ""));
-        }
-        comboDatabits.setValue(comboDatabits.getItems().get(0));
+        List<String> list = Stream.of(CH_SERIAL_DATABITS.values()).map(Enum::name).collect(Collectors.toList());
+        ViewUtils.initCombobox(comboDatabits, list, 0, "DATA_", "");
     }
 
     private void setupSerialBaud() {
-        for (CH_SERIAL_BAUDRATE baud : CH_SERIAL_BAUDRATE.values()) {
-            String name = baud == CH_SERIAL_BAUDRATE.NONE ? "-" : baud.name();
-
-            comboBaudrate.getItems().add(name.replaceAll("B_", ""));
-        }
-        comboBaudrate.setValue(comboBaudrate.getItems().get(0));
+        List<String> list = Stream.of(CH_SERIAL_BAUDRATE.values()).map(Enum::name).collect(Collectors.toList());
+        ViewUtils.initCombobox(comboBaudrate, list, 0, "B_", "");
     }
 
     private void setupComboName() {
-        for (CH_SENSOR_NAME sensor : CH_SENSOR_NAME.values()) {
-            String name = sensor == CH_SENSOR_NAME.NONE ? "-" : sensor.name();
-
-            comboNama.getItems().add(name.replaceAll("_", " "));
-        }
-        comboNama.setValue(comboNama.getItems().get(0));
+        List<String> list = Stream.of(CH_SENSOR_NAME.values()).map(Enum::name).collect(Collectors.toList());
+        ViewUtils.initCombobox(comboNama, list, 0, "_", " ");
     }
 
     private void setupComboJenis() {
-        for (CH_JENIS_NMEA jenis : CH_JENIS_NMEA.values()) {
-            String name = jenis == CH_JENIS_NMEA.NONE ? "-" : jenis.name();
+        List<String> list = Stream.of(CH_JENIS_NMEA.values()).map(Enum::name).collect(Collectors.toList());
+        ViewUtils.initCombobox(comboJenis, list, 0, "", "");
+        // for (CH_JENIS_NMEA jenis : CH_JENIS_NMEA.values()) {
+        // String name = jenis == CH_JENIS_NMEA.NONE ? "-" : jenis.name();
 
-            comboJenis.getItems().add(name);
-        }
-        comboJenis.setValue(comboJenis.getItems().get(0));
+        // comboJenis.getItems().add(name);
+        // }
+        // comboJenis.setValue(comboJenis.getItems().get(0));
     }
 
     private void setupResponsive() {
