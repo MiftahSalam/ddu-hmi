@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.text.TextAlignment;
 import lombok.extern.slf4j.Slf4j;
 import skm.ddu.mlh.App;
+import skm.ddu.mlh.shared.constants.ChannelConstant;
+import skm.ddu.mlh.shared.constants.ChannelConstant.CH_IO_FUNCTION;
 
 @Slf4j
 public class ChannelButton extends Button {
@@ -25,6 +27,7 @@ public class ChannelButton extends Button {
 
     private int chNum;
     private ChannelButtonRole chRole;
+    private final CH_IO_FUNCTION chFunction;
 
     public ChannelButton(int number, ChannelButtonRole role) {
         setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -34,6 +37,8 @@ public class ChannelButton extends Button {
 
         chNum = number;
         chRole = role;
+
+        chFunction = ChannelConstant.CH_IO_MAP.get(chNum);
 
         EventHandler<ActionEvent> click;
         switch (chRole) {
@@ -58,11 +63,19 @@ public class ChannelButton extends Button {
                 click = new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        // TODO: call info page
                         log.debug("button ch: " + chNum + ", role: " + role.name());
 
                         try {
-                            App.selectSettingOutPage(chNum);
+                            switch (chFunction) {
+                                case IN:
+                                    App.selectSettingInPage(chNum);
+                                    break;
+                                case OUT:
+                                    App.selectSettingOutPage(chNum);
+                                    break;
+                                default:
+                                    break;
+                            }
                         } catch (IOException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
