@@ -49,9 +49,9 @@
                            <children>
                               <ComboBox fx:id="comboJenis" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="137.0" VBox.vgrow="ALWAYS" />
                               <ComboBox fx:id="comboNama" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+                              <ComboBox fx:id="comboPriority" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
                               <ComboBox fx:id="comboBaudrate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
                               <ComboBox fx:id="comboDatabits" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
-                              <ComboBox fx:id="comboStopbits" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                      </children>
@@ -88,10 +88,10 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <ComboBox fx:id="comboFlow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
                               <ComboBox fx:id="comboValue" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
-                              <ComboBox fx:id="comboAssign" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
-                              <ComboBox fx:id="comboAssignValue" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+                              <ComboBox fx:id="comboParity" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+                              <ComboBox fx:id="comboStopbits" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+                              <ComboBox fx:id="comboFlow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                      </children>

@@ -21,6 +21,14 @@ public class ChannelConstant {
         CHANNEL
     }
 
+    public enum CH_IN_PRIORITY {
+        NONE,
+        P_1,
+        P_2,
+        P_3,
+        P_4,
+    }
+
     public enum CH_JENIS_NMEA {
         NONE,
         AG,
