@@ -15,6 +15,12 @@ public class ChannelConstant {
         OUT
     }
 
+    public enum CH_ASSIGN {
+        NONE,
+        JENIS,
+        CHANNEL
+    }
+
     public enum CH_JENIS_NMEA {
         NONE,
         AG,

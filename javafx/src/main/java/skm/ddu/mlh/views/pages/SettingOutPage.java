@@ -2,7 +2,9 @@ package skm.ddu.mlh.views.pages;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
@@ -14,6 +16,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import lombok.extern.slf4j.Slf4j;
 import skm.ddu.mlh.App;
+import skm.ddu.mlh.shared.constants.ChannelConstant;
+import skm.ddu.mlh.shared.constants.ChannelConstant.CH_ASSIGN;
+import skm.ddu.mlh.shared.constants.ChannelConstant.CH_IO_FUNCTION;
 import skm.ddu.mlh.shared.constants.ChannelConstant.CH_JENIS_NMEA;
 import skm.ddu.mlh.shared.constants.ChannelConstant.CH_NMEA_VALUE;
 import skm.ddu.mlh.shared.constants.ChannelConstant.CH_SENSOR_NAME;
@@ -36,7 +41,7 @@ public class SettingOutPage implements Initializable {
     private ComboBox<String> comboAssign;
 
     @FXML
-    private ComboBox<?> comboAssignValue;
+    private ComboBox<String> comboAssignValue;
 
     @FXML
     private ComboBox<String> comboBaudrate;
@@ -90,9 +95,53 @@ public class SettingOutPage implements Initializable {
         log.debug("channel: " + chNum);
     }
 
+    private void setupAssignChannelValue(CH_ASSIGN assign) {
+        comboAssignValue.getItems().clear();
+
+        switch (assign) {
+            case CHANNEL:
+                comboAssignValue.getItems().add("-");
+                Map<Object, Object> map = ChannelConstant.CH_IO_MAP.entrySet().stream()
+                        .filter(t -> t.getValue() == CH_IO_FUNCTION.IN)
+                        .collect(Collectors.toMap(e -> e.getKey(), e -> e.getKey()));
+                map.keySet().forEach(c -> {
+                    comboAssignValue.getItems().add(Integer.toString((Integer) c));
+                });
+                comboAssignValue.setValue(comboValue.getItems().get(0));
+
+                break;
+            case JENIS:
+                for (CH_JENIS_NMEA jenis : CH_JENIS_NMEA.values()) {
+                    String name = jenis == CH_JENIS_NMEA.NONE ? "-" : jenis.name();
+
+                    comboAssignValue.getItems().add(name);
+                }
+                comboAssignValue.setValue(comboAssignValue.getItems().get(0));
+
+                break;
+            default:
+                break;
+        }
+    }
+
     private void setupAssignChannel() {
-        comboAssign.getItems().addAll("-", "Channel", "Jenis");
+        for (CH_ASSIGN value : CH_ASSIGN.values()) {
+            String name = value == CH_ASSIGN.NONE ? "-" : value.name();
+
+            comboAssign.getItems().add(name);
+        }
         comboAssign.setValue(comboValue.getItems().get(0));
+
+        comboAssign.setOnAction(event -> {
+            CH_ASSIGN assign;
+            try {
+                assign = CH_ASSIGN.valueOf(comboAssign.getValue());
+            } catch (Exception e) {
+                assign = CH_ASSIGN.NONE;
+            }
+
+            setupAssignChannelValue(assign);
+        });
     }
 
     private void setupOutputValue() {
