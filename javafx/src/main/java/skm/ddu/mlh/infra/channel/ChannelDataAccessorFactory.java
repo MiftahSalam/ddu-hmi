@@ -6,9 +6,10 @@ public class ChannelDataAccessorFactory {
     private static ChannelDataAccessor channelDataAccessor;
 
     public static ChannelDataAccessor build() {
-        switch (ChannelAccessConfig.getAccessType()) {
+        ChannelAccessConfig instance = ChannelAccessConfig.getInstance();
+        switch (instance.getAccessType()) {
             case DB:
-                channelDataAccessor = new ChannelDataAccessorDB(ChannelAccessConfig.getAccessConfig());
+                channelDataAccessor = new ChannelDataAccessorDB(instance.getAccessConfig());
                 break;
             default:
                 break;

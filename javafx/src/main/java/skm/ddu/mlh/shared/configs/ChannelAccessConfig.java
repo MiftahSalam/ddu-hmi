@@ -5,10 +5,8 @@ import java.io.File;
 import org.apache.commons.configuration2.Configuration;
 import org.apache.commons.configuration2.builder.fluent.Configurations;
 
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@AllArgsConstructor
 @Slf4j
 public class ChannelAccessConfig {
     public static enum AccessType {
@@ -16,15 +14,23 @@ public class ChannelAccessConfig {
         REST_API
     }
 
-    private static AccessType accessType;
-    private static String accessConfig;
+    private AccessType accessType;
+    private String accessConfig;
     private static ChannelAccessConfig instance;
 
-    public static AccessType getAccessType() {
+    private ChannelAccessConfig(AccessType accessType, String accessConfig) {
+        this.accessType = accessType;
+        this.accessConfig = accessConfig;
+
+        log.debug("access type: " + accessType);
+        log.debug("access config: " + accessConfig);
+    }
+
+    public AccessType getAccessType() {
         return accessType;
     }
 
-    public static String getAccessConfig() {
+    public String getAccessConfig() {
         return accessConfig;
     }
 
@@ -34,12 +40,10 @@ public class ChannelAccessConfig {
             try {
                 Configuration config = configs.properties(new File("application.properties"));
 
-                accessType = AccessType.valueOf(config.getString("channel.access.type"));
-                accessConfig = config.getString("channel.access.config");
-                instance = new ChannelAccessConfig();
+                instance = new ChannelAccessConfig(
+                        AccessType.valueOf(config.getString("channel.access.type")),
+                        config.getString("channel.access.config"));
 
-                log.debug("access type: " + accessType);
-                log.debug("access config: " + accessConfig);
             } catch (Exception e) {
                 // TODO: handle exception
                 log.error("error read app config");
