@@ -10,14 +10,14 @@ import skm.ddu.mlh.shared.configs.DatabaseConfig;
 public class DBAccessPostgresql implements DBAccess {
     private Connection connection = null;
 
-    public DBAccessPostgresql(DatabaseConfig config) {
+    public DBAccessPostgresql(DatabaseConfig config) throws SQLException {
         try {
             String url = "jdbc:postgresql://" + config.getHost() + ":" + config.getPort() + "/" + config.getName()
                     + "?user=" + config.getUsername() + "&password=" + config.getPassword();
             // obtain a physical connection
             connection = DriverManager.getConnection(url, config.getUsername(), config.getPassword());
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 

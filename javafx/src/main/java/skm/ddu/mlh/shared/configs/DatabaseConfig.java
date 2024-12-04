@@ -15,6 +15,12 @@ public class DatabaseConfig {
     private static DatabaseConfig instance;
 
     private DatabaseConfig(String config) {
+        // TODO: temporary
+        host = "localhost";
+        port = 5432;
+        username = "postgres";
+        password = "123456";
+        name = "ddu_ch";
     }
 
     public static DatabaseConfig getInstance(String config) {
