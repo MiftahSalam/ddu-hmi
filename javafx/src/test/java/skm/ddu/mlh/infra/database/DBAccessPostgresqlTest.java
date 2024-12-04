@@ -10,7 +10,7 @@ public class DBAccessPostgresqlTest {
     @Test
     void testConnection() {
         assertDoesNotThrow(() -> {
-            DatabaseConfig cfg = DatabaseConfig.getInstance("");
+            DatabaseConfig cfg = DatabaseConfig.getInstance("localhost:5432:postgres:fisikawangarut:ddu_ch");
 
             DBAccessPostgresql dbAccessPostgresql = new DBAccessPostgresql(cfg);
         });

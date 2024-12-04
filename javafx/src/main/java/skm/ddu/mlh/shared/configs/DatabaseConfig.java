@@ -14,19 +14,31 @@ public class DatabaseConfig {
 
     private static DatabaseConfig instance;
 
-    private DatabaseConfig(String config) {
-        // TODO: temporary
-        host = "localhost";
-        port = 5432;
-        username = "postgres";
-        password = "123456";
-        name = "ddu_ch";
+    private DatabaseConfig(String config) throws Exception {
+        String[] splitConfig = config.split(":");
+        if (splitConfig.length != 5) {
+            throw new Exception("invalid database config");
+        }
+
+        try {
+            host = splitConfig[0];
+            port = Integer.parseInt(splitConfig[1]);
+            username = splitConfig[2];
+            password = splitConfig[3];
+            name = splitConfig[4];
+
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
-    public static DatabaseConfig getInstance(String config) {
-        log.debug("start method");
+    public static DatabaseConfig getInstance(String config) throws Exception {
         if (instance == null) {
-            instance = new DatabaseConfig(config);
+            try {
+                instance = new DatabaseConfig(config);
+            } catch (Exception e) {
+                throw e;
+            }
         }
 
         return instance;
