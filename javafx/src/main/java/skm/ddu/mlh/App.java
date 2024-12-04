@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import skm.ddu.mlh.shared.configs.ChannelAccessConfig;
 import skm.ddu.mlh.shared.configs.ServerConfig;
 import skm.ddu.mlh.views.pages.ChannelInfoPage;
 import skm.ddu.mlh.views.pages.HomePage;
@@ -85,6 +86,7 @@ public class App extends Application {
     public static void main(String[] args) {
         // test config
         ServerConfig serverConfig = ServerConfig.getInstance();
+        ChannelAccessConfig channelAccessConfig = ChannelAccessConfig.getInstance();
 
         launch();
     }
