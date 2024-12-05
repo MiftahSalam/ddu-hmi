@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
+import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import skm.ddu.mlh.models.ChannelConfigInfoModel;
@@ -44,9 +47,15 @@ public class ChannelRow extends HBox {
 
         super.getChildren().addAll(chNum, chName, chVal);
 
-        chNum.prefWidthProperty().bind(widthProperty().divide(3));
-        chName.prefWidthProperty().bind(widthProperty().divide(3));
-        chVal.prefWidthProperty().bind(widthProperty().divide(3));
+        sceneProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                DoubleBinding multiply = Bindings.multiply(1. / 7., newValue.widthProperty());
+                chNum.prefWidthProperty().bind(multiply);
+                chName.prefWidthProperty().bind(multiply);
+                chVal.prefWidthProperty().bind(multiply);
+            }
+            ;
+        });
     }
 
     public void setState(ChannelButtonState state) {
