@@ -28,4 +28,16 @@ public class DBAccessPostgresqlTest {
             assertEquals(26, dbAccessPostgresql.executeQuery("SELECT * FROM ddu_ch"));
         });
     }
+
+    @Test
+    void testExecuteQueryAndReturnResult() {
+
+    }
+
+    @Test
+    void testExecuteUpdate() {
+        assertDoesNotThrow(() -> {
+            assertEquals(1, dbAccessPostgresql.executeUpdate("UPDATE ddu_ch SET cur_data_fisis='test' WHERE ch_id=1"));
+        });
+    }
 }

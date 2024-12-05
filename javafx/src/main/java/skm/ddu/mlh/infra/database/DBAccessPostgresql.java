@@ -39,9 +39,19 @@ public class DBAccessPostgresql implements DBAccess {
     }
 
     @Override
-    public void executeUpdate(String sql) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'executeUpdate'");
+    public int executeUpdate(String sql) throws SQLException {
+        int result = -1;
+        try (Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        sql,
+                        ResultSet.TYPE_SCROLL_INSENSITIVE,
+                        ResultSet.CONCUR_READ_ONLY);) {
+            result = statement.executeUpdate();
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return result;
     }
 
     @Override
