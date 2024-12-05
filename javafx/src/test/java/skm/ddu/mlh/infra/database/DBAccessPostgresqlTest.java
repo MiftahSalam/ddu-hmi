@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.List;
+
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -32,10 +36,12 @@ public class DBAccessPostgresqlTest {
     @Test
     void testExecuteQueryAndReturnResult() {
         assertDoesNotThrow(() -> {
-            dbAccessPostgresql.executeQueryAndReturnResult("SELECT * FROM ddu_ch WHERE ch_id=1").forEach(t -> {
-                t.forEach(s -> {
-                    System.out.println("val: " + s);
-                });
+            List<List<String>> rowsResult = dbAccessPostgresql
+                    .executeQueryAndReturnResult("SELECT * FROM ddu_ch WHERE ch_id=1");
+            assertEquals(1, rowsResult.size());
+
+            rowsResult.forEach(t -> {
+                System.out.println("val: " + t);
             });
         });
     }
