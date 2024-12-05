@@ -1,5 +1,8 @@
 package skm.ddu.mlh.infra.database;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -43,8 +46,20 @@ public class DBAccessPostgresql implements DBAccess {
 
     @Override
     public int executeQuery(String query) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'executeQuery'");
+        int result = -1;
+        try (Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        query,
+                        ResultSet.TYPE_SCROLL_INSENSITIVE,
+                        ResultSet.CONCUR_READ_ONLY);) {
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.last();
+            result = resultSet.getRow();
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return result;
     }
 
     @Override
