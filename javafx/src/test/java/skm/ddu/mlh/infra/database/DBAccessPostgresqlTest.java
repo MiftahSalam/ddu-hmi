@@ -31,7 +31,13 @@ public class DBAccessPostgresqlTest {
 
     @Test
     void testExecuteQueryAndReturnResult() {
-
+        assertDoesNotThrow(() -> {
+            dbAccessPostgresql.executeQueryAndReturnResult("SELECT * FROM ddu_ch WHERE ch_id=1").forEach(t -> {
+                t.forEach(s -> {
+                    System.out.println("val: " + s);
+                });
+            });
+        });
     }
 
     @Test

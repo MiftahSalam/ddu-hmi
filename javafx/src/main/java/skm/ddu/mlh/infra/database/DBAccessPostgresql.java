@@ -3,7 +3,9 @@ package skm.ddu.mlh.infra.database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -74,8 +76,25 @@ public class DBAccessPostgresql implements DBAccess {
 
     @Override
     public List<List<String>> executeQueryAndReturnResult(String query) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'executeQueryAndReturnResult'");
+        try (Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        query);) {
+            ResultSet resultSet = statement.executeQuery();
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int numCol = metaData.getColumnCount();
+            List<List<String>> result = new ArrayList<List<String>>();
+
+            while (resultSet.next()) {
+                List<String> record = new ArrayList<String>();
+                for (int i = 1; i <= numCol; ++i) {
+                    record.add(resultSet.getString(i));
+                }
+                result.add(record);
+            }
+            return result;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Override
