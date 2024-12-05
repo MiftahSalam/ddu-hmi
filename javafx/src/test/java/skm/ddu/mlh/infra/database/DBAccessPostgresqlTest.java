@@ -1,6 +1,7 @@
 package skm.ddu.mlh.infra.database;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +14,7 @@ public class DBAccessPostgresqlTest {
             DatabaseConfig cfg = DatabaseConfig.getInstance("localhost:5432:postgres:fisikawangarut:ddu_ch");
 
             DBAccessPostgresql dbAccessPostgresql = new DBAccessPostgresql(cfg);
+            assertNotNull(dbAccessPostgresql);
         });
     }
 
