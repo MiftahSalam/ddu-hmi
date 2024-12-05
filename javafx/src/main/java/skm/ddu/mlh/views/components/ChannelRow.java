@@ -7,6 +7,8 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import skm.ddu.mlh.models.ChannelConfigInfoModel;
+import skm.ddu.mlh.services.ChannelConfigService;
 import skm.ddu.mlh.shared.constants.ChannelConstant;
 import skm.ddu.mlh.views.components.ChannelButton.ChannelButtonRole;
 import skm.ddu.mlh.views.components.ChannelButton.ChannelButtonState;
@@ -15,6 +17,7 @@ public class ChannelRow extends HBox {
     private final int rowNumber;
     private final ChannelConstant.CH_IO_FUNCTION ioFunction;
     private final List<ChannelButton> buttons = new ArrayList<>();
+    private ChannelConfigService channelConfigService = ChannelConfigService.getInstance();
 
     public ChannelRow(int row) {
         rowNumber = row;
@@ -27,7 +30,8 @@ public class ChannelRow extends HBox {
         setHgrow(chNum, Priority.ALWAYS);
 
         ChannelButton chName = new ChannelButton(rowNumber, ChannelButtonRole.CH_NAME);
-        chName.setText(RandomStringUtils.randomAlphabetic(15));
+        ChannelConfigInfoModel channelConfigInfo = channelConfigService.getChannelConfigInfo(row + 1);
+        chName.setText(channelConfigInfo.getSensorName());
         setHgrow(chName, Priority.ALWAYS);
 
         ChannelButton chVal = new ChannelButton(rowNumber, ChannelButtonRole.CH_VALUE);
