@@ -35,10 +35,10 @@ public class ChannelButton extends Button {
 
         setState(ChannelButtonState.CH_NOT_AVAILABLE);
 
-        chNum = number;
+        chNum = number + 1;
         chRole = role;
 
-        chFunction = ChannelConstant.CH_IO_MAP.get(chNum);
+        chFunction = ChannelConstant.CH_IO_MAP.get(number);
 
         EventHandler<ActionEvent> click;
         switch (chRole) {
