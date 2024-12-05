@@ -52,4 +52,11 @@ public class DBAccessPostgresql implements DBAccess {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'executeQueryAndReturnResult'");
     }
+
+    @Override
+    public void close() {
+        if (instance != null) {
+            instance.dataSource.close();
+        }
+    }
 }

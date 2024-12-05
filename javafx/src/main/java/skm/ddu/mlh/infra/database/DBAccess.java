@@ -10,4 +10,5 @@ public interface DBAccess {
 
     public List<List<String>> executeQueryAndReturnResult(String query) throws SQLException;
 
+    public void close();
 }
