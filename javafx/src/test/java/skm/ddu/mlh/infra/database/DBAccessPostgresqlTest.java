@@ -13,7 +13,7 @@ public class DBAccessPostgresqlTest {
         assertDoesNotThrow(() -> {
             DatabaseConfig cfg = DatabaseConfig.getInstance("localhost:5432:postgres:fisikawangarut:ddu_ch");
 
-            DBAccessPostgresql dbAccessPostgresql = new DBAccessPostgresql(cfg);
+            DBAccessPostgresql dbAccessPostgresql = DBAccessPostgresql.getInstance(cfg);
             assertNotNull(dbAccessPostgresql);
         });
     }

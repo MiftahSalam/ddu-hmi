@@ -1,24 +1,38 @@
 package skm.ddu.mlh.infra.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 import skm.ddu.mlh.shared.configs.DatabaseConfig;
 
 public class DBAccessPostgresql implements DBAccess {
-    private Connection connection = null;
+    private HikariDataSource dataSource;
+    private static DBAccessPostgresql instance;
 
-    public DBAccessPostgresql(DatabaseConfig config) throws SQLException {
-        try {
-            String url = "jdbc:postgresql://" + config.getHost() + ":" + config.getPort() + "/" + config.getName()
-                    + "?user=" + config.getUsername() + "&password=" + config.getPassword();
-            // obtain a physical connection
-            connection = DriverManager.getConnection(url, config.getUsername(), config.getPassword());
-        } catch (SQLException e) {
-            throw e;
+    private DBAccessPostgresql(DatabaseConfig config) {
+        HikariConfig hikariConfig = new HikariConfig();
+        String url = "jdbc:postgresql://" + config.getHost() + ":" + config.getPort() + "/" + config.getName();
+
+        hikariConfig.setJdbcUrl(url);
+        hikariConfig.setPassword(config.getPassword());
+        hikariConfig.setUsername(config.getUsername());
+        hikariConfig.setMaximumPoolSize(10);
+        hikariConfig.setMinimumIdle(5);
+        hikariConfig.setIdleTimeout(60_000);
+        hikariConfig.setMaxLifetime(60 * 60 * 1000);
+
+        dataSource = new HikariDataSource(hikariConfig);
+    }
+
+    public static DBAccessPostgresql getInstance(DatabaseConfig config) {
+        if (instance == null) {
+            instance = new DBAccessPostgresql(config);
         }
+
+        return instance;
     }
 
     @Override

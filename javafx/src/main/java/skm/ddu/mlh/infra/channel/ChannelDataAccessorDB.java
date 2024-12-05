@@ -13,7 +13,7 @@ public class ChannelDataAccessorDB implements ChannelDataAccessor {
     public ChannelDataAccessorDB(String config) {
         try {
             DatabaseConfig instance = DatabaseConfig.getInstance(config);
-            dbAccess = new DBAccessPostgresql(instance);
+            dbAccess = DBAccessPostgresql.getInstance(instance);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
