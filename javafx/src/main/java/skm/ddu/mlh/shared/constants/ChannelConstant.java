@@ -21,6 +21,12 @@ public class ChannelConstant {
         CHANNEL
     }
 
+    public enum CH_ERROR_STATUS {
+        NORMAL,
+        TIMEOUT,
+        SOFTWARE
+    }
+
     public enum CH_IN_PRIORITY {
         NONE,
         P_1,

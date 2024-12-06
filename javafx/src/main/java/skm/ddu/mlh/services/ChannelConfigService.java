@@ -5,6 +5,7 @@ import skm.ddu.mlh.infra.channel.ChannelDataAccessorFactory;
 import skm.ddu.mlh.models.ChannelConfigInRequest;
 import skm.ddu.mlh.models.ChannelConfigInfoModel;
 import skm.ddu.mlh.models.ChannelConfigOutRequest;
+import skm.ddu.mlh.models.ChannelDataPeriodicModel;
 
 public class ChannelConfigService {
     private ChannelDataAccessor channelDataAccessor;
@@ -28,6 +29,10 @@ public class ChannelConfigService {
 
     public ChannelConfigInfoModel getChannelConfigInfo(int channelNumber) {
         return channelDataAccessor.getChannelInfo(channelNumber);
+    }
+
+    public ChannelDataPeriodicModel getChannelDataPeriod(int channelNumber) {
+        return channelDataAccessor.getChannelDataPeriodFisis(channelNumber);
     }
 
     public void setInputConfig(int channelNumber, ChannelConfigInRequest request) {

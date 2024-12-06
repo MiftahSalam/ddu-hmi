@@ -2,15 +2,17 @@ package skm.ddu.mlh.views.components;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.lang3.RandomStringUtils;
-
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
-import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import skm.ddu.mlh.models.ChannelConfigInfoModel;
+import skm.ddu.mlh.models.ChannelDataPeriodicModel;
 import skm.ddu.mlh.services.ChannelConfigService;
 import skm.ddu.mlh.shared.constants.ChannelConstant;
 import skm.ddu.mlh.views.components.ChannelButton.ChannelButtonRole;
@@ -21,6 +23,11 @@ public class ChannelRow extends HBox {
     private final ChannelConstant.CH_IO_FUNCTION ioFunction;
     private final List<ChannelButton> buttons = new ArrayList<>();
     private ChannelConfigService channelConfigService = ChannelConfigService.getInstance();
+    private static ScheduledExecutorService scheduledExecutorService;
+
+    static {
+        scheduledExecutorService = new ScheduledThreadPoolExecutor(10);
+    }
 
     public ChannelRow(int row) {
         rowNumber = row;
@@ -38,7 +45,7 @@ public class ChannelRow extends HBox {
         setHgrow(chName, Priority.ALWAYS);
 
         ChannelButton chVal = new ChannelButton(rowNumber, ChannelButtonRole.CH_VALUE);
-        chVal.setText(RandomStringUtils.randomAlphabetic(15));
+        chVal.setText("-");
         setHgrow(chVal, Priority.ALWAYS);
 
         buttons.add(chNum);
@@ -56,6 +63,41 @@ public class ChannelRow extends HBox {
             }
             ;
         });
+
+        update();
+    }
+
+    private void update() {
+        final Runnable updater = () -> {
+            // get information on background thread
+            ChannelDataPeriodicModel channelDataPeriod = channelConfigService.getChannelDataPeriod(rowNumber);
+
+            // update UI on FX thread
+            Platform.runLater(
+                    () -> {
+                        if (channelDataPeriod != null) {
+                            switch (channelDataPeriod.getCurrentError()) {
+                                case NORMAL:
+                                    setState(ChannelButtonState.CH_AVAILABLE);
+                                    break;
+                                case TIMEOUT:
+                                case SOFTWARE:
+                                    setState(ChannelButtonState.CH_NOT_AVAILABLE);
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            buttons.get(2).setText(channelDataPeriod.getDataFisis());
+
+                        } else {
+                            setState(ChannelButtonState.CH_NOT_AVAILABLE);
+                            buttons.get(2).setText("");
+                        }
+                    });
+        };
+
+        scheduledExecutorService.scheduleAtFixedRate(updater, 5000, 1000, TimeUnit.MILLISECONDS);
     }
 
     public void setState(ChannelButtonState state) {
