@@ -10,6 +10,7 @@ import skm.ddu.mlh.models.ChannelConfigInfoModel;
 import skm.ddu.mlh.models.ChannelConfigOutRequest;
 import skm.ddu.mlh.models.ChannelDataPeriodicModel;
 import skm.ddu.mlh.shared.configs.DatabaseConfig;
+import skm.ddu.mlh.shared.constants.ChannelConstant.CH_ERROR_STATUS;
 
 public class ChannelDataAccessorDB implements ChannelDataAccessor {
     private DBAccess dbAccess;
@@ -92,7 +93,7 @@ public class ChannelDataAccessorDB implements ChannelDataAccessor {
             if (result.size() == 1) {
                 dataFisisModel = new ChannelDataPeriodicModel(
                         result.get(0).get(0),
-                        result.get(0).get(1));
+                        CH_ERROR_STATUS.valueOf(result.get(0).get(1)));
             } else {
                 // TODO throw error
             }
