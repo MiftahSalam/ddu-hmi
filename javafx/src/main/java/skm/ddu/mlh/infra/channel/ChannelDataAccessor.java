@@ -8,7 +8,7 @@ import skm.ddu.mlh.models.ChannelDataPeriodicModel;
 public interface ChannelDataAccessor {
     ChannelConfigInfoModel getChannelInfo(int channelNumber);
 
-    ChannelDataPeriodicModel getChannelDataFisis(int channelNumber);
+    ChannelDataPeriodicModel getChannelDataPeriodFisis(int channelNumber);
 
     void setInputConfig(int channelNumber, ChannelConfigInRequest request);
 

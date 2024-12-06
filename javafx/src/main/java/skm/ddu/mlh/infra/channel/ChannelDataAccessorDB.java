@@ -77,7 +77,7 @@ public class ChannelDataAccessorDB implements ChannelDataAccessor {
     }
 
     @Override
-    public ChannelDataPeriodicModel getChannelDataFisis(int channelNumber) {
+    public ChannelDataPeriodicModel getChannelDataPeriodFisis(int channelNumber) {
         StringBuilder queryBuilder = new StringBuilder();
         ChannelDataPeriodicModel dataFisisModel = null;
 

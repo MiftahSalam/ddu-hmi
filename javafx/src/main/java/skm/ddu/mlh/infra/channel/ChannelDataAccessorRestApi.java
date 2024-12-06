@@ -26,7 +26,7 @@ public class ChannelDataAccessorRestApi implements ChannelDataAccessor {
     }
 
     @Override
-    public ChannelDataPeriodicModel getChannelDataFisis(int channelNumber) {
+    public ChannelDataPeriodicModel getChannelDataPeriodFisis(int channelNumber) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getChannelDataFisis'");
     }
