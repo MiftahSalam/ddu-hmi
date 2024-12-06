@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ChannelDataFisisModel {
+public class ChannelDataPeriodicModel {
     private String dataFisis;
+    private String currentError;
 }

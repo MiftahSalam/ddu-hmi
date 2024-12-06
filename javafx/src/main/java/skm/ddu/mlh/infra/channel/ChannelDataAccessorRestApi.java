@@ -3,7 +3,7 @@ package skm.ddu.mlh.infra.channel;
 import skm.ddu.mlh.models.ChannelConfigInRequest;
 import skm.ddu.mlh.models.ChannelConfigInfoModel;
 import skm.ddu.mlh.models.ChannelConfigOutRequest;
-import skm.ddu.mlh.models.ChannelDataFisisModel;
+import skm.ddu.mlh.models.ChannelDataPeriodicModel;
 
 public class ChannelDataAccessorRestApi implements ChannelDataAccessor {
 
@@ -26,7 +26,7 @@ public class ChannelDataAccessorRestApi implements ChannelDataAccessor {
     }
 
     @Override
-    public ChannelDataFisisModel getChannelDataFisis(int channelNumber) {
+    public ChannelDataPeriodicModel getChannelDataFisis(int channelNumber) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getChannelDataFisis'");
     }
