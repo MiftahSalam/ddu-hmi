@@ -8,6 +8,7 @@ import skm.ddu.mlh.infra.database.DBAccessPostgresql;
 import skm.ddu.mlh.models.ChannelConfigInRequest;
 import skm.ddu.mlh.models.ChannelConfigInfoModel;
 import skm.ddu.mlh.models.ChannelConfigOutRequest;
+import skm.ddu.mlh.models.ChannelDataFisisModel;
 import skm.ddu.mlh.shared.configs.DatabaseConfig;
 
 public class ChannelDataAccessorDB implements ChannelDataAccessor {
@@ -73,5 +74,30 @@ public class ChannelDataAccessorDB implements ChannelDataAccessor {
     public void setOutputConfig(int channelNumber, ChannelConfigOutRequest request) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setOutputConfig'");
+    }
+
+    @Override
+    public ChannelDataFisisModel getChannelDataFisis(int channelNumber) {
+        StringBuilder queryBuilder = new StringBuilder();
+        ChannelDataFisisModel dataFisisModel = null;
+
+        queryBuilder.append("SELECT ");
+        queryBuilder.append("cur_data_fisis ");
+        queryBuilder.append("FROM ddu_ch WHERE ch_id=");
+        queryBuilder.append(channelNumber);
+
+        try {
+            List<List<String>> result = dbAccess.executeQueryAndReturnResult(queryBuilder.toString());
+            if (result.size() == 1) {
+                dataFisisModel = new ChannelDataFisisModel(result.get(0).get(0));
+            } else {
+                // TODO throw error
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return dataFisisModel;
     }
 }
