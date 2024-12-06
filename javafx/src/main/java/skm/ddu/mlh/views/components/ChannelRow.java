@@ -35,17 +35,76 @@ public class ChannelRow extends HBox {
 
         setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
+        setupButtons();
+        setupResponsive();
+        setupPeriodicUdate();
+    }
+
+    public void setState(ChannelButtonState state) {
+        for (ChannelButton channelButton : buttons) {
+            channelButton.setState(state);
+        }
+    }
+
+    private void setupPeriodicUdate() {
+        final Runnable updater = () -> {
+            ChannelDataPeriodicModel channelDataPeriod = channelConfigService.getChannelDataPeriod(rowNumber + 1);
+
+            Platform.runLater(
+                    () -> {
+                        ChannelButtonState currState = ChannelButtonState.CH_NOT_AVAILABLE;
+                        String currBtnText = "";
+
+                        if (channelDataPeriod != null) {
+                            switch (channelDataPeriod.getCurrentError()) {
+                                case NORMAL:
+                                    currState = ChannelButtonState.CH_AVAILABLE;
+                                    break;
+                                case TIMEOUT:
+                                case SOFTWARE:
+                                    currState = ChannelButtonState.CH_NOT_AVAILABLE;
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            currBtnText = channelDataPeriod.getDataFisis();
+
+                        }
+
+                        setState(currState);
+                        buttons.get(2).setText(currBtnText);
+                    });
+        };
+
+        scheduledExecutorService.scheduleAtFixedRate(updater, 5000, 1000, TimeUnit.MILLISECONDS);
+    }
+
+    private void setupResponsive() {
+        sceneProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                DoubleBinding multiply = Bindings.multiply(1. / 7., newValue.widthProperty());
+                buttons.forEach(btn -> {
+                    btn.prefWidthProperty().bind(multiply);
+
+                });
+            }
+        });
+
+    }
+
+    private void setupButtons() {
         ChannelButton chNum = new ChannelButton(rowNumber, ChannelButtonRole.CH_NUMBER);
-        chNum.setText(String.format("%d\n(%s)", row + 1, ioFunction.toString()));
+        chNum.setText(String.format("%d\n(%s)", rowNumber + 1, ioFunction.toString()));
         setHgrow(chNum, Priority.ALWAYS);
 
         ChannelButton chName = new ChannelButton(rowNumber, ChannelButtonRole.CH_NAME);
-        ChannelConfigInfoModel channelConfigInfo = channelConfigService.getChannelConfigInfo(row + 1);
+        ChannelConfigInfoModel channelConfigInfo = channelConfigService.getChannelConfigInfo(rowNumber + 1);
         chName.setText(channelConfigInfo.getSensorName());
         setHgrow(chName, Priority.ALWAYS);
 
         ChannelButton chVal = new ChannelButton(rowNumber, ChannelButtonRole.CH_VALUE);
-        chVal.setText("-");
+        chVal.setText("");
         setHgrow(chVal, Priority.ALWAYS);
 
         buttons.add(chNum);
@@ -53,56 +112,5 @@ public class ChannelRow extends HBox {
         buttons.add(chVal);
 
         super.getChildren().addAll(chNum, chName, chVal);
-
-        sceneProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                DoubleBinding multiply = Bindings.multiply(1. / 7., newValue.widthProperty());
-                chNum.prefWidthProperty().bind(multiply);
-                chName.prefWidthProperty().bind(multiply);
-                chVal.prefWidthProperty().bind(multiply);
-            }
-            ;
-        });
-
-        update();
-    }
-
-    private void update() {
-        final Runnable updater = () -> {
-            // get information on background thread
-            ChannelDataPeriodicModel channelDataPeriod = channelConfigService.getChannelDataPeriod(rowNumber);
-
-            // update UI on FX thread
-            Platform.runLater(
-                    () -> {
-                        if (channelDataPeriod != null) {
-                            switch (channelDataPeriod.getCurrentError()) {
-                                case NORMAL:
-                                    setState(ChannelButtonState.CH_AVAILABLE);
-                                    break;
-                                case TIMEOUT:
-                                case SOFTWARE:
-                                    setState(ChannelButtonState.CH_NOT_AVAILABLE);
-                                    break;
-                                default:
-                                    break;
-                            }
-
-                            buttons.get(2).setText(channelDataPeriod.getDataFisis());
-
-                        } else {
-                            setState(ChannelButtonState.CH_NOT_AVAILABLE);
-                            buttons.get(2).setText("");
-                        }
-                    });
-        };
-
-        scheduledExecutorService.scheduleAtFixedRate(updater, 5000, 1000, TimeUnit.MILLISECONDS);
-    }
-
-    public void setState(ChannelButtonState state) {
-        for (ChannelButton channelButton : buttons) {
-            channelButton.setState(state);
-        }
     }
 }
