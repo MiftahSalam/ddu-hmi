@@ -6,8 +6,9 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import skm.ddu.mlh.views.panels.ChannelsPanel;
+import skm.ddu.mlh.views.utils.AppCloseable;
 
-public class HomePage extends HBox {
+public class HomePage extends HBox implements AppCloseable {
     private ChannelsPanel chPannel;
     private ChannelsPanel chPannel1;
     Button pageButton;
@@ -35,6 +36,12 @@ public class HomePage extends HBox {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void close() {
+        chPannel.close();
+        chPannel1.close();
     }
 
     private VBox createRightBar() {

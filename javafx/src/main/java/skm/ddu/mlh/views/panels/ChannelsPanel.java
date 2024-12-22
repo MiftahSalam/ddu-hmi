@@ -1,6 +1,7 @@
 package skm.ddu.mlh.views.panels;
 
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -8,8 +9,9 @@ import javafx.scene.layout.VBox;
 import skm.ddu.mlh.shared.constants.GlobalConstant;
 import skm.ddu.mlh.views.components.ChannelRow;
 import skm.ddu.mlh.views.components.ChannelButton.ChannelButtonState;
+import skm.ddu.mlh.views.utils.AppCloseable;
 
-public class ChannelsPanel extends VBox {
+public class ChannelsPanel extends VBox implements AppCloseable {
     private final int CHANNELS_PER_PAGE = GlobalConstant.CHANNEL_COUNT / GlobalConstant.CHANNEL_PAGE;
     private final int CHANNELS_PER_COLUMN;
 
@@ -28,6 +30,19 @@ public class ChannelsPanel extends VBox {
             setVgrow(row, Priority.ALWAYS);
             super.getChildren().add(row);
         }
+    }
+
+    @Override
+    public void close() {
+        super.getChildren().filtered(t -> t.getClass() == HBox.class).forEach(h -> {
+            System.out.println(h);
+            HBox p = (HBox) h;
+            p.getChildren().filtered(c -> c.getClass() == ChannelRow.class).forEach(r -> {
+                System.out.println(r);
+                ChannelRow cRow = (ChannelRow) r;
+                cRow.close();
+            });
+        });
     }
 
     private HBox generateChannelRows(int index) {

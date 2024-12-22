@@ -17,8 +17,9 @@ import skm.ddu.mlh.services.ChannelConfigService;
 import skm.ddu.mlh.shared.constants.ChannelConstant;
 import skm.ddu.mlh.views.components.ChannelButton.ChannelButtonRole;
 import skm.ddu.mlh.views.components.ChannelButton.ChannelButtonState;
+import skm.ddu.mlh.views.utils.AppCloseable;
 
-public class ChannelRow extends HBox {
+public class ChannelRow extends HBox implements AppCloseable {
     private final int rowNumber;
     private final ChannelConstant.CH_IO_FUNCTION ioFunction;
     private final List<ChannelButton> buttons = new ArrayList<>();
@@ -44,6 +45,11 @@ public class ChannelRow extends HBox {
         for (ChannelButton channelButton : buttons) {
             channelButton.setState(state);
         }
+    }
+
+    @Override
+    public void close() {
+        scheduledExecutorService.shutdown();
     }
 
     private void setupPeriodicUdate() {
