@@ -1,12 +1,15 @@
 package skm.ddu.mlh;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import skm.ddu.mlh.infra.channel.ChannelDataAccessorFactory;
 import skm.ddu.mlh.shared.configs.ChannelAccessConfig;
 import skm.ddu.mlh.shared.configs.ServerConfig;
+import skm.ddu.mlh.shared.exceptions.DDUFXMLLoadException;
 import skm.ddu.mlh.views.pages.ChannelInfoPage;
 import skm.ddu.mlh.views.pages.HomePage;
 import skm.ddu.mlh.views.pages.SettingInPage;
@@ -29,16 +32,30 @@ public class App extends Application {
     private static ChannelInfoPage channelInfoPageController;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws Exception {
         initPages();
 
-        scene = new Scene(homePage);
-        String cssPath = App.class.getResource("assets/css/global.css").toExternalForm();
+        try {
+            scene = new Scene(homePage);
+            String cssPath = App.class.getResource("assets/css/globall.css").toExternalForm();
 
-        scene.getStylesheets().add(cssPath);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
+            scene.getStylesheets().add(cssPath);
+            stage.setScene(scene);
+            stage.setFullScreen(true);
+            stage.show();
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            stop();
+        }
+    }
+
+    @Override
+    public void stop() throws Exception {
+        homePage.close();
+        ChannelDataAccessorFactory.destroy();
+        Platform.exit();
     }
 
     static public void selectHomePage() throws IOException {
@@ -77,9 +94,10 @@ public class App extends Application {
             settingOutPageController = settingOutPageFxmlLoader.getController();
             settingInPageController = settingInPageFxmlLoader.getController();
             channelInfoPageController = channelInfoPageFxmlLoader.getController();
-        } catch (IOException e) {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            // e.printStackTrace();
+            throw new DDUFXMLLoadException(e.getMessage());
         }
     }
 
@@ -90,5 +108,4 @@ public class App extends Application {
 
         launch();
     }
-
 }
