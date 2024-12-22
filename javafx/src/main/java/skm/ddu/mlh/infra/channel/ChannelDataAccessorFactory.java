@@ -17,4 +17,10 @@ public class ChannelDataAccessorFactory {
 
         return channelDataAccessor;
     }
+
+    public static void destroy() {
+        if (channelDataAccessor != null) {
+            channelDataAccessor.close();
+        }
+    }
 }

@@ -104,4 +104,15 @@ public class ChannelDataAccessorDB implements ChannelDataAccessor {
 
         return dataFisisModel;
     }
+
+    @Override
+    public void close() {
+        // TODO Auto-generated method stub
+        try {
+            dbAccess.close();
+            ;
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
 }

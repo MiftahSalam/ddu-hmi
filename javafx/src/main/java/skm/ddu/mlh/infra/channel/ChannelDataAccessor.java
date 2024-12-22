@@ -13,4 +13,6 @@ public interface ChannelDataAccessor {
     void setInputConfig(int channelNumber, ChannelConfigInRequest request);
 
     void setOutputConfig(int channelNumber, ChannelConfigOutRequest request);
+
+    void close();
 }

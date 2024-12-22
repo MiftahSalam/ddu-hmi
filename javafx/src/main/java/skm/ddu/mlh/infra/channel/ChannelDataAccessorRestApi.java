@@ -31,4 +31,10 @@ public class ChannelDataAccessorRestApi implements ChannelDataAccessor {
         throw new UnsupportedOperationException("Unimplemented method 'getChannelDataFisis'");
     }
 
+    @Override
+    public void close() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'close'");
+    }
+
 }
