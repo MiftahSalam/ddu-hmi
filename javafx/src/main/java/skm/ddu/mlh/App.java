@@ -37,7 +37,7 @@ public class App extends Application {
 
         try {
             scene = new Scene(homePage);
-            String cssPath = App.class.getResource("assets/css/globall.css").toExternalForm();
+            String cssPath = App.class.getResource("assets/css/global.css").toExternalForm();
 
             scene.getStylesheets().add(cssPath);
             stage.setScene(scene);
